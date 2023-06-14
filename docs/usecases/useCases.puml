@@ -1,0 +1,12 @@
+@startuml
+left to right direction
+
+actor "User" as user
+
+rectangle Talk {
+    usecase "Create Message" as UC1
+}
+
+user -->  UC1
+
+@enduml
