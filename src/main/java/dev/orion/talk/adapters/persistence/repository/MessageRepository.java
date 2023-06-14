@@ -16,6 +16,7 @@
  */
 package dev.orion.talk.adapters.persistence.repository;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import dev.orion.talk.adapters.persistence.entity.MessageEntity;
 import io.quarkus.hibernate.reactive.panache.Panache;
 import io.quarkus.hibernate.reactive.panache.PanacheRepository;
@@ -24,6 +25,7 @@ import io.smallrye.mutiny.Uni;
 /**
  * A {@link PanacheRepository} for {@link MessageEntity}.
  */
+@ApplicationScoped
 public class MessageRepository implements PanacheRepository<MessageEntity> {
 
     /**
