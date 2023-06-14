@@ -16,11 +16,11 @@
  */
 package dev.orion.talk.adapters.persistence.repository;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import dev.orion.talk.adapters.persistence.entity.MessageEntity;
 import io.quarkus.hibernate.reactive.panache.Panache;
 import io.quarkus.hibernate.reactive.panache.PanacheRepository;
 import io.smallrye.mutiny.Uni;
+import jakarta.enterprise.context.ApplicationScoped;
 
 /**
  * A {@link PanacheRepository} for {@link MessageEntity}.
@@ -34,7 +34,7 @@ public class MessageRepository implements PanacheRepository<MessageEntity> {
      * @param message A {@link MessageEntity} to be persisted
      * @return  A {@link Uni} of {@link MessageEntity}
      */
-    public Uni<MessageEntity> persistMessage(MessageEntity message) {
+    public Uni<MessageEntity> persistMessage(final MessageEntity message) {
         return Panache.<MessageEntity>withTransaction(message::persist);
     }
 }

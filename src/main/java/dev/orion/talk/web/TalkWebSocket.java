@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.orion.talk;
+package dev.orion.talk.web;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.websocket.OnClose;
@@ -25,7 +25,7 @@ import jakarta.websocket.Session;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
 
-@ServerEndpoint("/talk/{text}")
+@ServerEndpoint("/talkws/{text}")
 @ApplicationScoped
 public class TalkWebSocket {
 

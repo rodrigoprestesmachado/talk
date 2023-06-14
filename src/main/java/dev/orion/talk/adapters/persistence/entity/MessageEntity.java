@@ -18,11 +18,13 @@ package dev.orion.talk.adapters.persistence.entity;
 
 import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter @Setter
+@Table(name = "message")
 public class MessageEntity extends PanacheEntity {
 
     private String text;
