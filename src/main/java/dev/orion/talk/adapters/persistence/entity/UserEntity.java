@@ -14,30 +14,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.orion.talk.usecase;
+package dev.orion.talk.adapters.persistence.entity;
 
-import dev.orion.talk.model.Message;
+import io.quarkus.hibernate.reactive.panache.PanacheEntity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
- * Message use case.
+ * User entity.
  */
-public class MessageUC {
+@Entity
+@Getter @Setter
+@Table(name = "user")
+public class UserEntity extends PanacheEntity {
 
     /**
-     * Create a message.
-     *
-     * @param text  Message text.
-     * @return Message object.
+     * Message text.
      */
-    public Message createMessage(final String text) {
-        Message message = null;
-        if (text == null || text.isEmpty()) {
-            throw new IllegalArgumentException("The text can't be null or empty");
-        } else {
-            message = new Message();
-            message.setText(text);
-        }
-        return message;
-    }
+    private String hash;
 
 }

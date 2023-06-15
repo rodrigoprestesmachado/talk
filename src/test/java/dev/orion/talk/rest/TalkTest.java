@@ -34,6 +34,7 @@ public class TalkTest {
     void createMessage() {
         given().when()
             .param("text", "hello world")
+            .param("userHash", "1346")
             .post("/talk/message/create")
         .then()
             .statusCode(200)

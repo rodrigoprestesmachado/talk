@@ -25,27 +25,54 @@ import jakarta.websocket.Session;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
 
+/**
+ * Talk WebSocket.
+ */
 @ServerEndpoint("/talkws/{text}")
 @ApplicationScoped
 public class TalkWebSocket {
 
+    /**
+     * On open.
+     *
+     * @param session   Session
+     * @param text    Text
+     */
     @OnOpen
-    public void onOpen(Session session, @PathParam("text") String text) {
+    public void onOpen(final Session session, @PathParam("text") final String text) {
         System.out.println("onOpen> " + text);
     }
 
+    /**
+     * On close.
+     *
+     * @param session Session
+     * @param text Text
+     */
     @OnClose
-    public void onClose(Session session, @PathParam("text") String text) {
+    public void onClose(final Session session, @PathParam("text") final String text) {
         System.out.println("onClose> " + text);
     }
 
+    /**
+     * On error.
+     *
+     * @param session Session
+     * @param text Text
+     * @param throwable Throwable
+     */
     @OnError
-    public void onError(Session session, @PathParam("text") String text, Throwable throwable) {
+    public void onError(final Session session, @PathParam("text") final String text, final Throwable throwable) {
         System.out.println("onError> " + text + ": " + throwable);
     }
 
+    /**
+     * On message.
+     * @param message Message
+     * @param text Text
+     */
     @OnMessage
-    public void onMessage(String message, @PathParam("text") String text) {
+    public void onMessage(final String message, @PathParam("text") final String text) {
         System.out.println("onMessage> " + text + ": " + message);
     }
 }

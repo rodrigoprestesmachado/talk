@@ -18,20 +18,38 @@ package dev.orion.talk.model;
 
 import java.util.UUID;
 
+/**
+ * Channel model
+ */
 public class Channel {
 
+    /** Channel name */
+    private String name;
+
+    /** Channel hash */
     private String hash;
+
+    /**
+     * Constructor.
+     */
+    public Channel() {
+        this.hash = UUID.randomUUID().toString();
+    }
 
     public String getHash() {
         return hash;
     }
 
-    public void setHash(String hash) {
+    public void setHash(final String hash) {
         this.hash = hash;
     }
 
-    public Channel() {
-        this.hash = UUID.randomUUID().toString();
+    public String getName() {
+        return name;
+    }
+
+    public void setName(final String name) {
+        this.name = name;
     }
 
 }

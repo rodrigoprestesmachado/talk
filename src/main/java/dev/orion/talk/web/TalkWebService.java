@@ -18,6 +18,7 @@ package dev.orion.talk.web;
 
 import dev.orion.talk.adapters.controllers.Controller;
 import dev.orion.talk.adapters.persistence.entity.MessageEntity;
+import io.quarkus.hibernate.reactive.panache.common.WithSession;
 import io.smallrye.mutiny.Uni;
 import jakarta.inject.Inject;
 import jakarta.validation.constraints.NotEmpty;
@@ -29,11 +30,18 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+/**
+ * Talk web service.
+ */
 @Path("/talk/message")
 @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 @Produces(MediaType.APPLICATION_JSON)
+@WithSession
 public class TalkWebService {
 
+    /**
+     * Controller.
+     */
     @Inject
     Controller controller;
 
@@ -46,9 +54,10 @@ public class TalkWebService {
     @POST
     @Path("/create")
     public Uni<MessageEntity> create(
-            @FormParam("text") @NotEmpty final String text) {
+            @FormParam("text") @NotEmpty final String text,
+            @FormParam("userHash") @NotEmpty final String userHash) {
         try {
-            return controller.createMessage(text)
+            return controller.createMessage(text, userHash)
                 .log()
                 .onItem().ifNotNull()
                 .transform(message -> message)

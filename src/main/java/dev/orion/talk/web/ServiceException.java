@@ -30,7 +30,7 @@ import jakarta.ws.rs.core.Response.Status;
 public class ServiceException extends WebApplicationException {
 
     /**
-     * Service Exception constructor.
+     * ServiceException constructor.
      *
      * @param message : The message of the exception
      * @param status  : The HTTP error code
@@ -56,5 +56,4 @@ public class ServiceException extends WebApplicationException {
             .entity(Map.of("violations", violations))
             .build();
     }
-
 }

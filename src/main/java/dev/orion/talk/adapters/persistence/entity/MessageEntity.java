@@ -17,17 +17,39 @@
 package dev.orion.talk.adapters.persistence.entity;
 
 import io.quarkus.hibernate.reactive.panache.PanacheEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Message entity.
+ */
 @Entity
 @Getter @Setter
 @Table(name = "message")
 public class MessageEntity extends PanacheEntity {
 
+    /**
+     * Message text.
+     */
     private String text;
+
+    /**
+     * Message hash.
+     */
     private String hash;
+
+    /**
+     * The owner of the message.
+     */
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
 }

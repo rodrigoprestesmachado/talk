@@ -16,63 +16,29 @@
  */
 package dev.orion.talk.model;
 
-import java.time.Instant;
 import java.util.UUID;
 
 /**
- * Message model.
+ * User model.
  */
-public class Message {
+public class User {
 
-    /** Message text. */
-    private String text;
-
-    /** Message hash. */
+    /** Hash of the user. */
     private String hash;
 
-    /** The owner of the message. */
-    private User user;
-
-    /** The timestamp of the message. */
-    private Instant timestamp;
-
     /**
-     * Message constructor.
+     * Default constructor.
      */
-    public Message() {
+    public User() {
         this.hash = UUID.randomUUID().toString();
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(final String text) {
-        this.text = text;
     }
 
     public String getHash() {
         return hash;
     }
 
-    public void setHash(String hash) {
+    public void setHash(final String hash) {
         this.hash = hash;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(final User user) {
-        this.user = user;
-    }
-
-    public Instant getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Instant timestamp) {
-        this.timestamp = timestamp;
     }
 
 }

@@ -19,34 +19,76 @@ package dev.orion.talk.adapters.controllers;
 import org.modelmapper.ModelMapper;
 
 import dev.orion.talk.adapters.persistence.entity.MessageEntity;
+import dev.orion.talk.adapters.persistence.entity.UserEntity;
 import dev.orion.talk.adapters.persistence.repository.MessageRepository;
+import dev.orion.talk.adapters.persistence.repository.UserRepository;
 import dev.orion.talk.model.Message;
 import dev.orion.talk.usecase.MessageUC;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+/**
+ * Controller.
+ */
 @ApplicationScoped
 public class Controller {
 
+    /**
+     * Message repository.
+     */
     @Inject
-    MessageRepository repo;
+    private MessageRepository messageRepo;
 
-    MessageUC uc = new MessageUC();
+    /**
+     * User repository.
+     */
+    @Inject
+    private UserRepository userRepo;
 
-    ModelMapper mapper = new ModelMapper();
+    /**
+     * Message use case.
+     */
+    private MessageUC uc = new MessageUC();
+
+    /**
+     * Model mapper.
+     */
+    private ModelMapper mapper = new ModelMapper();
 
     /**
      * Creates a message.
      *
      * @param text A {@link String} with the message text
+     * @param hash A {@link String} with the user hash
      * @return A {@link Uni} of {@link MessageEntity}
      */
-    public Uni<MessageEntity> createMessage(String text) {
-        Message message = uc.createMessage(text);
-        MessageEntity e = mapper.map(message, MessageEntity.class);
-        return repo.persistMessage(e)
-            .onItem().ifNotNull().transform(m -> m);
+    public Uni<MessageEntity> createMessage(String text, String hash) {
+        return findUser(hash)
+            .onItem().transformToUni(user -> {
+                Message message = uc.createMessage(text);
+                MessageEntity messageEntity = mapper.map(message,
+                    MessageEntity.class);
+                messageEntity.setUser(user);
+                return messageRepo.persistMessage(messageEntity)
+                    .onItem().ifNotNull().transform(m -> m);
+            });
+    }
+
+    /**
+     * Finds a user by hash.
+     *
+     * @param hash A {@link String} hash of the user
+     * @return A {@link Uni} of {@link UserEntity}
+     */
+    private Uni<UserEntity> findUser(String hash) {
+        return userRepo.find("hash = ?1",hash).firstResult()
+            .onItem().ifNotNull().transform(user -> user)
+            .onItem().ifNull().continueWith(() -> {
+                UserEntity user = new UserEntity();
+                user.setHash(hash);
+                return user;
+            });
     }
 
 }
