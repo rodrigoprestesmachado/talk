@@ -43,7 +43,6 @@ public class TalkUnitTest {
         String text = null;
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             uc.createMessage(text);
-
         });
     }
 

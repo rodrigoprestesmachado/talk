@@ -26,7 +26,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import io.vertx.core.cli.annotations.Description;
 
 @QuarkusTest
-public class TalkTest {
+public class TalkIT {
 
     @Test
     @Order(1)
