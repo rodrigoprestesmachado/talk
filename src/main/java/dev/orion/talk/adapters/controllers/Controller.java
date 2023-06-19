@@ -63,16 +63,17 @@ public class Controller {
      * @param hash A {@link String} with the user hash
      * @return A {@link Uni} of {@link MessageEntity}
      */
-    public Uni<MessageEntity> createMessage(String text, String hash) {
-        return findUser(hash)
-            .onItem().transformToUni(user -> {
-                Message message = uc.createMessage(text);
-                MessageEntity messageEntity = mapper.map(message,
-                    MessageEntity.class);
-                messageEntity.setUser(user);
-                return messageRepo.persistMessage(messageEntity)
-                    .onItem().ifNotNull().transform(m -> m);
-            });
+    public Uni<MessageEntity> createMessage(final String text,
+        final String hash) {
+            return findUser(hash)
+                .onItem().transformToUni(user -> {
+                    Message message = uc.createMessage(text);
+                    MessageEntity messageEntity = mapper.map(message,
+                        MessageEntity.class);
+                    messageEntity.setUser(user);
+                    return messageRepo.persistMessage(messageEntity)
+                        .onItem().ifNotNull().transform(m -> m);
+                });
     }
 
     /**
@@ -81,7 +82,7 @@ public class Controller {
      * @param hash A {@link String} hash of the user
      * @return A {@link Uni} of {@link UserEntity}
      */
-    private Uni<UserEntity> findUser(String hash) {
+    private Uni<UserEntity> findUser(final String hash) {
         return userRepo.find("hash = ?1",hash).firstResult()
             .onItem().ifNotNull().transform(user -> user)
             .onItem().ifNull().continueWith(() -> {

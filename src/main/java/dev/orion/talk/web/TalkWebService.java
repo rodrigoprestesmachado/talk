@@ -43,12 +43,13 @@ public class TalkWebService {
      * Controller.
      */
     @Inject
-    Controller controller;
+    private Controller controller;
 
     /**
      * Create a message endpoint.
      *
      * @param text the message text
+     * @param userHash the user hash
      * @return the message created
      */
     @POST

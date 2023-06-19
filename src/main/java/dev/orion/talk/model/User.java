@@ -33,10 +33,20 @@ public class User {
         this.hash = UUID.randomUUID().toString();
     }
 
+    /**
+     * Get user hash.
+     *
+     * @return User hash.
+     */
     public String getHash() {
         return hash;
     }
 
+    /**
+     * Set user hash.
+     *
+     * @param hash User hash.
+     */
     public void setHash(final String hash) {
         this.hash = hash;
     }

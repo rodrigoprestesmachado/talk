@@ -32,7 +32,7 @@ public class MessageUC {
     public Message createMessage(final String text) {
         Message message = null;
         if (text == null || text.isEmpty()) {
-            throw new IllegalArgumentException("The text can't be null or empty");
+            throw new IllegalArgumentException("The text can't be empty");
         } else {
             message = new Message();
             message.setText(text);
