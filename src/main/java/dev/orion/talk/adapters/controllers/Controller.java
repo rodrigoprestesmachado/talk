@@ -83,7 +83,7 @@ public class Controller {
      * @return A {@link Uni} of {@link UserEntity}
      */
     private Uni<UserEntity> findUser(final String hash) {
-        return userRepo.find("hash = ?1",hash).firstResult()
+        return userRepo.find("hash = ?1", hash).firstResult()
             .onItem().ifNotNull().transform(user -> user)
             .onItem().ifNull().continueWith(() -> {
                 UserEntity user = new UserEntity();

@@ -48,8 +48,8 @@ public class ServiceException extends WebApplicationException {
      * @return A Response object
      */
     private static Response init(final String message, final Status status) {
-        List<Map<String,String>> violations = new ArrayList<>();
-        violations.add(Map.of("message",message));
+        List<Map<String, String>> violations = new ArrayList<>();
+        violations.add(Map.of("message", message));
         return Response
             .status(status)
             .entity(Map.of("violations", violations))
