@@ -24,6 +24,7 @@ import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.junit.QuarkusTest;
 import io.vertx.core.cli.annotations.Description;
+import jakarta.ws.rs.core.Response;
 
 @QuarkusTest
 public class TalkIT {
@@ -37,7 +38,7 @@ public class TalkIT {
             .param("userHash", "1346")
             .post("/talk/message/create")
         .then()
-            .statusCode(200)
+            .statusCode(Response.Status.OK.getStatusCode())
             .body("text", is("hello world"));
     }
 
@@ -49,7 +50,7 @@ public class TalkIT {
             .param("text", "")
             .post("/talk/message/create")
         .then()
-            .statusCode(400);
+             .statusCode(Response.Status.BAD_REQUEST.getStatusCode());
     }
 
 }
