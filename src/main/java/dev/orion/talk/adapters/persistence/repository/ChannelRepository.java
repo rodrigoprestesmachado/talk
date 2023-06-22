@@ -14,38 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.orion.talk.adapters.persistence.entity;
+package dev.orion.talk.adapters.persistence.repository;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import dev.orion.talk.adapters.persistence.entity.ChannelEntity;
+import io.quarkus.hibernate.reactive.panache.PanacheRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 
 /**
- * User entity.
+ * A {@link PanacheRepository} for {@link ChannelEntity}.
  */
-@Entity
-@Getter
-@Setter
-@Table(name = "user")
-public class UserEntity extends PanacheEntityBase {
-
-    /**
-     * User id.
-     */
-    @Id
-    @GeneratedValue
-    @JsonIgnore
-    private Long id;
-
-    /**
-     * Message text.
-     */
-    private String hash;
+@ApplicationScoped
+public class ChannelRepository implements PanacheRepository<ChannelEntity> {
 
 }

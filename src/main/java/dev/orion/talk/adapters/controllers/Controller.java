@@ -16,10 +16,14 @@
  */
 package dev.orion.talk.adapters.controllers;
 
+import java.util.UUID;
+
 import org.modelmapper.ModelMapper;
 
+import dev.orion.talk.adapters.persistence.entity.ChannelEntity;
 import dev.orion.talk.adapters.persistence.entity.MessageEntity;
 import dev.orion.talk.adapters.persistence.entity.UserEntity;
+import dev.orion.talk.adapters.persistence.repository.ChannelRepository;
 import dev.orion.talk.adapters.persistence.repository.MessageRepository;
 import dev.orion.talk.adapters.persistence.repository.UserRepository;
 import dev.orion.talk.model.Message;
@@ -47,6 +51,12 @@ public class Controller {
     private UserRepository userRepo;
 
     /**
+     * Channel repository.
+     */
+    @Inject
+    private ChannelRepository channelRepo;
+
+    /**
      * Message use case.
      */
     private MessageUC uc = new MessageUC();
@@ -59,36 +69,68 @@ public class Controller {
     /**
      * Creates a message.
      *
-     * @param text A {@link String} with the message text
-     * @param hash A {@link String} with the user hash
+     * @param text        A {@link String} with the message text
+     * @param userHash    A {@link String} with the user hash
+     * @param channelHash A {@link String} with the channel hash
      * @return A {@link Uni} of {@link MessageEntity}
      */
     public Uni<MessageEntity> createMessage(final String text,
-        final String hash) {
-            return findUser(hash)
-                .onItem().transformToUni(user -> {
-                    Message message = uc.createMessage(text);
-                    MessageEntity messageEntity = mapper.map(message,
-                        MessageEntity.class);
-                    messageEntity.setUser(user);
-                    return messageRepo.persistMessage(messageEntity)
-                        .onItem().ifNotNull().transform(m -> m);
-                });
+            final String userHash, final String channelHash) {
+        return findUser(userHash)
+            .onItem().transformToUni(user -> {
+                return findChannel(channelHash)
+                    .onItem().ifNotNull().transformToUni(channel -> {
+                        // Create message
+                        Message message = uc.createMessage(text);
+                        // Map message to message entity
+                        MessageEntity messageEntity = mapper.map(
+                            message, MessageEntity.class);
+
+                        // Verify if channel has a name
+                        channel.setName(channel.getName() == null
+                            ? UUID.randomUUID().toString()
+                            : channel.getName());
+
+                        // Set message channel and user
+                        messageEntity.setChannel(channel);
+                        messageEntity.setUser(user);
+
+                        // Persist message
+                        return messageRepo.persistMessage(messageEntity)
+                            .onItem().ifNotNull().transform(m -> m);
+                    });
+            });
     }
 
     /**
      * Finds a user by hash.
      *
-     * @param hash A {@link String} hash of the user
+     * @param userHash A {@link String} hash of the user
      * @return A {@link Uni} of {@link UserEntity}
      */
-    private Uni<UserEntity> findUser(final String hash) {
-        return userRepo.find("hash = ?1", hash).firstResult()
+    private Uni<UserEntity> findUser(final String userHash) {
+        return userRepo.find("hash = ?1", userHash).firstResult()
             .onItem().ifNotNull().transform(user -> user)
             .onItem().ifNull().continueWith(() -> {
                 UserEntity user = new UserEntity();
-                user.setHash(hash);
+                user.setHash(userHash);
                 return user;
+            });
+    }
+
+    /**
+     * Finds a channel by hash.
+     *
+     * @param channelHash A {@link String} hash of the user
+     * @return A {@link Uni} of {@link ChannelEntity}
+     */
+    private Uni<ChannelEntity> findChannel(final String channelHash) {
+        return channelRepo.find("hash = ?1", channelHash).firstResult()
+            .onItem().ifNotNull().transform(user -> user)
+            .onItem().ifNull().continueWith(() -> {
+                ChannelEntity channel = new ChannelEntity();
+                channel.setHash(channelHash);
+                return channel;
             });
     }
 

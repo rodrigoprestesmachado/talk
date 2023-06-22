@@ -16,10 +16,14 @@
  */
 package dev.orion.talk.adapters.persistence.entity;
 
-import io.quarkus.hibernate.reactive.panache.PanacheEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -32,7 +36,15 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 @Table(name = "message")
-public class MessageEntity extends PanacheEntity {
+public class MessageEntity extends PanacheEntityBase {
+
+    /**
+     * Message id.
+     */
+    @Id
+    @GeneratedValue
+    @JsonIgnore
+    private Long id;
 
     /**
      * Message text.
@@ -50,5 +62,12 @@ public class MessageEntity extends PanacheEntity {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private UserEntity user;
+
+    /**
+     * The channel of the message.
+     */
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "channel_id")
+    private ChannelEntity channel;
 
 }

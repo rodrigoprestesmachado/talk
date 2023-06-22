@@ -50,15 +50,17 @@ public class TalkWebService {
      *
      * @param text the message text
      * @param userHash the user hash
+     * @param channelHash the channel hash
      * @return the message created
      */
     @POST
     @Path("/create")
     public Uni<MessageEntity> create(
             @FormParam("text") @NotEmpty final String text,
-            @FormParam("userHash") @NotEmpty final String userHash) {
+            @FormParam("userHash") @NotEmpty final String userHash,
+            @FormParam("channelHash") @NotEmpty final String channelHash) {
         try {
-            return controller.createMessage(text, userHash)
+            return controller.createMessage(text, userHash, channelHash)
                 .log()
                 .onItem().ifNotNull()
                 .transform(message -> message)

@@ -27,25 +27,25 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * User entity.
+ * Channel entity.
  */
 @Entity
-@Getter
-@Setter
-@Table(name = "user")
-public class UserEntity extends PanacheEntityBase {
+@Getter @Setter
+@Table(name = "channel")
+public class ChannelEntity extends PanacheEntityBase {
 
     /**
-     * User id.
+     * Channel id.
      */
     @Id
     @GeneratedValue
     @JsonIgnore
     private Long id;
 
-    /**
-     * Message text.
-     */
+    /** Channel name. */
+    private String name;
+
+    /** Channel hash. */
     private String hash;
 
 }
