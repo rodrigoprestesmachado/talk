@@ -35,7 +35,8 @@ public class TalkIT {
     void createMessage() {
         given().when()
             .param("text", "hello world")
-            .param("userHash", "1346")
+            .param("userHash", "123456789")
+            .param("channelHash", "123456789")
             .post("/talk/message/create")
         .then()
             .statusCode(Response.Status.OK.getStatusCode())
