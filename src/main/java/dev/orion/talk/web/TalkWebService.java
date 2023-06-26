@@ -16,7 +16,7 @@
  */
 package dev.orion.talk.web;
 
-import dev.orion.talk.adapters.controllers.Controller;
+import dev.orion.talk.adapters.controllers.ServiceController;
 import dev.orion.talk.adapters.persistence.entity.MessageEntity;
 import io.quarkus.hibernate.reactive.panache.common.WithSession;
 import io.smallrye.mutiny.Uni;
@@ -43,7 +43,7 @@ public class TalkWebService {
      * Controller.
      */
     @Inject
-    private Controller controller;
+    private ServiceController controller;
 
     /**
      * Create a message endpoint.

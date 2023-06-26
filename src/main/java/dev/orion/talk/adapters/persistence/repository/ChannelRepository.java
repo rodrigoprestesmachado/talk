@@ -17,7 +17,10 @@
 package dev.orion.talk.adapters.persistence.repository;
 
 import dev.orion.talk.adapters.persistence.entity.ChannelEntity;
+import dev.orion.talk.adapters.persistence.entity.MessageEntity;
+import io.quarkus.hibernate.reactive.panache.Panache;
 import io.quarkus.hibernate.reactive.panache.PanacheRepository;
+import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 
 /**
@@ -25,5 +28,30 @@ import jakarta.enterprise.context.ApplicationScoped;
  */
 @ApplicationScoped
 public class ChannelRepository implements PanacheRepository<ChannelEntity> {
+
+    /**
+     * Persists a channel entity.
+     *
+     * @param channel A {@link MessageEntity} to be persisted
+     * @return  A {@link Uni} of {@link MessageEntity}
+     */
+    public Uni<ChannelEntity> save(final ChannelEntity channel) {
+
+        return findByHash(channel.getHash())
+            .onItem().ifNotNull().transform(entity -> entity)
+            .onItem().ifNull().switchTo(
+                Panache.<ChannelEntity>withTransaction(channel::persist)
+            );
+    }
+
+    /**
+     * Find a channel by hash.
+     *
+     * @param hash
+     * @return
+     */
+    private Uni<ChannelEntity> findByHash(final String hash) {
+        return find("hash", hash).firstResult();
+    }
 
 }

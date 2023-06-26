@@ -34,7 +34,7 @@ public class MessageRepository implements PanacheRepository<MessageEntity> {
      * @param message A {@link MessageEntity} to be persisted
      * @return  A {@link Uni} of {@link MessageEntity}
      */
-    public Uni<MessageEntity> persistMessage(final MessageEntity message) {
+    public Uni<MessageEntity> save(final MessageEntity message) {
         return Panache.<MessageEntity>withTransaction(message::persist);
     }
 }
