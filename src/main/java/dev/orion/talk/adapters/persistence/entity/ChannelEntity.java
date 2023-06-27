@@ -16,12 +16,17 @@
  */
 package dev.orion.talk.adapters.persistence.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,5 +52,26 @@ public class ChannelEntity extends PanacheEntityBase {
 
     /** Channel hash. */
     private String hash;
+
+    /** Massages. */
+    @OneToMany(mappedBy = "channel")
+    @JsonBackReference
+    private List<MessageEntity> messages;
+
+    /**
+     * Constructor.
+     */
+    public ChannelEntity() {
+        this.messages = new ArrayList<>();
+    }
+
+    /**
+     * Add message to channel.
+     *
+     * @param message Message to add.
+     */
+    public void addMessage(final MessageEntity message) {
+        messages.add(message);
+    }
 
 }

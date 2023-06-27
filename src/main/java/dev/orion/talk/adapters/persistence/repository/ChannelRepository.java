@@ -17,7 +17,6 @@
 package dev.orion.talk.adapters.persistence.repository;
 
 import dev.orion.talk.adapters.persistence.entity.ChannelEntity;
-import dev.orion.talk.adapters.persistence.entity.MessageEntity;
 import io.quarkus.hibernate.reactive.panache.Panache;
 import io.quarkus.hibernate.reactive.panache.PanacheRepository;
 import io.smallrye.mutiny.Uni;
@@ -48,7 +47,7 @@ public class ChannelRepository implements PanacheRepository<ChannelEntity> {
      * Find a channel by hash.
      *
      * @param hash
-     * @return
+     * @return A {@link Uni} of {@link ChannelEntity}
      */
     private Uni<ChannelEntity> findByHash(final String hash) {
         return find("hash", hash).firstResult();

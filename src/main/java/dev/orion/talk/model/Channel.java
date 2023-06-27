@@ -16,6 +16,8 @@
  */
 package dev.orion.talk.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -29,11 +31,15 @@ public class Channel {
     /** Channel hash. */
     private String hash;
 
+    /** Messages. */
+    private List<Message> messages;
+
     /**
      * Constructor.
      */
     public Channel() {
         this.hash = UUID.randomUUID().toString();
+        this.messages = new ArrayList<>();
     }
 
     /**
@@ -70,6 +76,33 @@ public class Channel {
      */
     public void setName(final String name) {
         this.name = name;
+    }
+
+    /**
+     * Get messages.
+     *
+     * @return A list of messages.
+     */
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    /**
+     * Set messages.
+     *
+     * @param messages A list of messages.
+     */
+    public void setMessages(final List<Message> messages) {
+        this.messages = messages;
+    }
+
+    /**
+     * Add message.
+     *
+     * @param message A Message object.
+     */
+    public void addMessage(final Message message) {
+        this.messages.add(message);
     }
 
 }

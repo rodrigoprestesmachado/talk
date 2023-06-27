@@ -17,6 +17,7 @@
 package dev.orion.talk.adapters.persistence.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
 import jakarta.persistence.CascadeType;
@@ -67,7 +68,7 @@ public class MessageEntity extends PanacheEntityBase {
      * The channel of the message.
      */
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "channel_id")
+    @JsonManagedReference
     private ChannelEntity channel;
 
 }

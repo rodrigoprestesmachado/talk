@@ -17,6 +17,7 @@
 package dev.orion.talk.graphql;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -49,6 +50,7 @@ public class GraphQlIT {
             .body(query)
             .post("/graphql")
         .then()
+            .log().body()
             .statusCode(Response.Status.OK.getStatusCode());
     }
 

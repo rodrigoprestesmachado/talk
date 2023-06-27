@@ -27,6 +27,7 @@ public class ChannelUC {
      * Create a channel.
      *
      * @param name  Channel name.
+     * @param hash  Channel hash.
      * @return Channel object.
      */
     public Channel createChannel(final String name, final String hash) {

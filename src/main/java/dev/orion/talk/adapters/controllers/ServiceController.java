@@ -61,6 +61,7 @@ public class ServiceController extends Controller {
                                 // Set message channel and user
                                 messageEntity.setChannel(channel);
                                 messageEntity.setUser(user);
+                                channel.addMessage(messageEntity);
 
                                 // Persist message
                                 return messageRepo.save(messageEntity)
@@ -116,7 +117,7 @@ public class ServiceController extends Controller {
      * @param channel A {@link ChannelEntity} with the channel
      * @return  A {@link Uni} of {@link Channel}
      */
-    public Uni<ChannelEntity> addChannel(ChannelEntity channel) {
+    public Uni<ChannelEntity> addChannel(final ChannelEntity channel) {
         Channel model = channelUC.createChannel(channel.getName(),
             channel.getHash());
         return channelRepo.save(mapper.map(model, ChannelEntity.class))

@@ -33,6 +33,9 @@ public class Message {
     /** The owner of the message. */
     private User user;
 
+    /** The owner of the message. */
+    private Channel channel;
+
     /** The timestamp of the message. */
     private Instant timestamp;
 
@@ -95,6 +98,23 @@ public class Message {
      */
     public void setUser(final User user) {
         this.user = user;
+    }
+
+    /**
+     * Get message channel.
+     * @return Message channel.
+     */
+    public Channel getChannel() {
+        return channel;
+    }
+
+    /**
+     * Set message channel.
+     *
+     * @param channel Message channel.
+     */
+    public void setChannel(final Channel channel) {
+        this.channel = channel;
     }
 
     /**
