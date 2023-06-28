@@ -27,11 +27,16 @@
 				"GitHub.copilot",
 				"Equinusocio.vsc-material-theme-icons",
 				"redhat.vscode-microprofile-pack",
-				"eamodio.gitlens"
+				"eamodio.gitlens",
+				"rangav.vscode-thunder-client"
 			],
 			"settings": {
 				"workbench.colorTheme": "GitHub Light Default",
-				"workbench.iconTheme": "eq-material-theme-icons-light"
+				"workbench.iconTheme": "eq-material-theme-icons-light",
+				"editor.rulers": [80,120],
+				"workbench.colorCustomizations": {
+					"editorRuler.foreground": "#F3F7FF"
+				}
 			}
 		}
 	}

@@ -20,6 +20,8 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import dev.orion.talk.adapters.controllers.ServiceController;
+import io.quarkus.hibernate.reactive.panache.common.WithSession;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.websocket.OnClose;
@@ -35,7 +37,12 @@ import jakarta.websocket.server.ServerEndpoint;
  */
 @ServerEndpoint("/talk/{channel}/{user}")
 @ApplicationScoped
+@WithSession
 public class TalkSocket {
+
+    /** Service controller. */
+    @Inject
+    private ServiceController controller;
 
     /** Logger. */
     private Logger log = Logger.getLogger(TalkSocket.class.getName());
@@ -105,7 +112,7 @@ public class TalkSocket {
         if ("_ready_".equalsIgnoreCase(message)) {
             broadcast(user + " " + channel + " joined", channel);
         } else {
-            broadcast(user + " " + channel + " " + message, channel);
+            broadcast(user + " " + message, channel);
         }
     }
 
@@ -117,15 +124,17 @@ public class TalkSocket {
      */
     private void broadcast(final String message, final String channel) {
         Set<Session> sessions = manager.getSessions(channel);
-        sessions.forEach(s -> {
-            s.getAsyncRemote().sendObject(message, result ->  {
-                if (result.getException() != null
-                    && log.isLoggable(Level.INFO)) {
-                    log.log(Level.INFO, "{} Error {}",
-                        new Object[]{channel, result.getException()});
-                }
+        if (sessions != null) {
+            sessions.forEach(s -> {
+                s.getAsyncRemote().sendObject(message, result ->  {
+                    if (result.getException() != null
+                        && log.isLoggable(Level.INFO)) {
+                        log.log(Level.INFO, "{} Error {}",
+                            new Object[]{channel, result.getException()});
+                    }
+                });
             });
-        });
+        }
     }
 
 }

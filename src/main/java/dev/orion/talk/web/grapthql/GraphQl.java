@@ -41,12 +41,6 @@ import jakarta.inject.Inject;
 public class GraphQl {
 
     /**
-     * Broadcast processor.
-     */
-    private BroadcastProcessor<MessageEntity> processor =
-        BroadcastProcessor.create();
-
-    /**
      * Service controller.
      */
     @Inject
@@ -64,7 +58,21 @@ public class GraphQl {
     }
 
     /**
-     * Create a Channel.
+     * Create a Message throught Graphql.
+     *
+     * @param channel Channel to create.
+     * @return Channel created.
+     */
+    @Mutation
+    public Uni<MessageEntity> createMessage(
+        final String text,
+        final String userHash,
+        final String channelHash) {
+        return controller.createMessage(text, userHash, channelHash);
+    }
+
+    /**
+     * Create a Channel throught Graphql.
      *
      * @param channel Channel to create.
      * @return Channel created.
@@ -72,16 +80,6 @@ public class GraphQl {
     @Mutation
     public Uni<ChannelEntity> createChannel(final ChannelEntity channel) {
         return controller.addChannel(channel);
-    }
-
-    /**
-     * Create a Message Web Socket.
-     *
-     * @return List of Messages
-     */
-    @Subscription
-    public Multi<MessageEntity> socket() {
-        return processor;
     }
 
 }
