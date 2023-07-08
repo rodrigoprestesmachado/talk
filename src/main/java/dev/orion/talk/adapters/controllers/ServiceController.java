@@ -24,6 +24,7 @@ import dev.orion.talk.adapters.persistence.entity.MessageEntity;
 import dev.orion.talk.adapters.persistence.entity.UserEntity;
 import dev.orion.talk.model.Channel;
 import dev.orion.talk.model.Message;
+import io.quarkus.hibernate.reactive.panache.common.WithSession;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -31,6 +32,7 @@ import jakarta.enterprise.context.ApplicationScoped;
  * Service Controller.
  */
 @ApplicationScoped
+@WithSession
 public class ServiceController extends Controller {
 
     /**

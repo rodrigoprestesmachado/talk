@@ -5,6 +5,7 @@ actor "User" as user
 
 rectangle Talk {
     usecase "Create Message" as UC1
+    usecase "Create Channel" as UC1
 }
 
 user -->  UC1

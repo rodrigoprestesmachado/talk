@@ -23,32 +23,28 @@ import dev.orion.talk.adapters.persistence.repository.MessageRepository;
 import dev.orion.talk.adapters.persistence.repository.UserRepository;
 import dev.orion.talk.usecase.ChannelUC;
 import dev.orion.talk.usecase.MessageUC;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
 /**
  * Controller.
  */
-@ApplicationScoped
 public class Controller {
 
     /**
      * Message repository.
      */
-    @Inject
-    protected MessageRepository messageRepo;
+    protected MessageRepository messageRepo = new MessageRepository();
 
     /**
      * User repository.
      */
-    @Inject
-    protected UserRepository userRepo;
+    protected UserRepository userRepo = new UserRepository();
 
     /**
      * Channel repository.
      */
     @Inject
-    protected ChannelRepository channelRepo;
+    protected ChannelRepository channelRepo = new ChannelRepository();
 
     /**
      * Channel use case.

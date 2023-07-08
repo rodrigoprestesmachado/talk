@@ -18,7 +18,6 @@ package dev.orion.talk.web.rest;
 
 import dev.orion.talk.adapters.controllers.ServiceController;
 import dev.orion.talk.adapters.persistence.entity.MessageEntity;
-import io.quarkus.hibernate.reactive.panache.common.WithSession;
 import io.smallrye.mutiny.Uni;
 import jakarta.inject.Inject;
 import jakarta.validation.constraints.NotEmpty;
@@ -36,7 +35,6 @@ import jakarta.ws.rs.core.Response;
 @Path("/talk/message")
 @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 @Produces(MediaType.APPLICATION_JSON)
-@WithSession
 public class TalkWebService {
 
     /**

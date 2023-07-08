@@ -26,18 +26,13 @@ import org.eclipse.microprofile.graphql.Query;
 import dev.orion.talk.adapters.controllers.ServiceController;
 import dev.orion.talk.adapters.persistence.entity.ChannelEntity;
 import dev.orion.talk.adapters.persistence.entity.MessageEntity;
-import io.quarkus.hibernate.reactive.panache.common.WithSession;
-import io.smallrye.graphql.api.Subscription;
-import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
-import io.smallrye.mutiny.operators.multi.processors.BroadcastProcessor;
 import jakarta.inject.Inject;
 
 /**
  * GraphQl.
  */
 @GraphQLApi
-@WithSession
 public class GraphQl {
 
     /**
@@ -53,7 +48,7 @@ public class GraphQl {
      */
     @Query("allMessages")
     @Description("Get all Messages from the service")
-    public Uni<List<MessageEntity>> getAllFilms() {
+    public Uni<List<MessageEntity>> getAllMessages() {
         return controller.getAllMessages();
     }
 
