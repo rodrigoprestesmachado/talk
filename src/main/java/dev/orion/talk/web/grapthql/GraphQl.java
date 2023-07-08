@@ -42,39 +42,42 @@ public class GraphQl {
     private ServiceController controller;
 
     /**
-     * Get all Messages from the service.
+     * Create a Message thought Graphql.
      *
-     * @return List of Messages.
-     */
-    @Query("allMessages")
-    @Description("Get all Messages from the service")
-    public Uni<List<MessageEntity>> getAllMessages() {
-        return controller.getAllMessages();
-    }
-
-    /**
-     * Create a Message throught Graphql.
-     *
-     * @param channel Channel to create.
-     * @return Channel created.
+     * @param text        Message text.
+     * @param userHash    User hash.
+     * @param channelHash Channel hash.
+     * @return Message object.
      */
     @Mutation
     public Uni<MessageEntity> createMessage(
-        final String text,
-        final String userHash,
-        final String channelHash) {
+            final String text,
+            final String userHash,
+            final String channelHash) {
         return controller.createMessage(text, userHash, channelHash);
     }
 
     /**
-     * Create a Channel throught Graphql.
+     * Create a Channel thought Graphql.
      *
-     * @param channel Channel to create.
-     * @return Channel created.
+     * @param channel Channel to be created.
+     * @return Channel object.
      */
     @Mutation
     public Uni<ChannelEntity> createChannel(final ChannelEntity channel) {
         return controller.addChannel(channel);
+    }
+
+    /**
+     * Get all Messages of a channel.
+     *
+     * @param channelHash Channel hash.
+     * @return List of Messages.
+     */
+    @Query("getMessages")
+    @Description("Get all Messages of a channel")
+    public Uni<List<MessageEntity>> getMessages(final String channelHash) {
+        return controller.getMessages(channelHash);
     }
 
 }

@@ -5,9 +5,11 @@ actor "User" as user
 
 rectangle Talk {
     usecase "Create Message" as UC1
-    usecase "Create Channel" as UC1
+    usecase "Create Channel" as UC2
+    usecase "List Message" as UC3
 }
 
 user -->  UC1
-
+user -->  UC2
+user -->  UC3
 @enduml

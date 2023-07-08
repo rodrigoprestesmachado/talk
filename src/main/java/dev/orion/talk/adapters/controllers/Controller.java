@@ -33,18 +33,20 @@ public class Controller {
     /**
      * Message repository.
      */
-    protected MessageRepository messageRepo = new MessageRepository();
+    @Inject
+    protected MessageRepository messageRepo;
 
     /**
      * User repository.
      */
-    protected UserRepository userRepo = new UserRepository();
+    @Inject
+    protected UserRepository userRepo;
 
     /**
      * Channel repository.
      */
     @Inject
-    protected ChannelRepository channelRepo = new ChannelRepository();
+    protected ChannelRepository channelRepo;
 
     /**
      * Channel use case.

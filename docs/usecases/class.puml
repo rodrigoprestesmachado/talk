@@ -1,0 +1,19 @@
+@startuml
+
+class Message {
+    String text
+    String hash
+}
+
+class User {
+    String hash
+}
+
+class Channel {
+    String name
+    String hash
+}
+
+Message "*" --> "1" User
+Message "*" -- "1" Channel
+@enduml

@@ -35,6 +35,9 @@ import jakarta.enterprise.context.ApplicationScoped;
 @WithSession
 public class ServiceController extends Controller {
 
+    /** Basic query for hash. */
+    private static final String HASH_QUERY = "hash = ?1";
+
     /**
      * Creates a message.
      *
@@ -79,7 +82,7 @@ public class ServiceController extends Controller {
      * @return A {@link Uni} of {@link UserEntity}
      */
     private Uni<UserEntity> findUser(final String userHash) {
-        return userRepo.find("hash = ?1", userHash).firstResult()
+        return userRepo.find(HASH_QUERY, userHash).firstResult()
             .onItem().ifNotNull().transform(user -> user)
             .onItem().ifNull().continueWith(() -> {
                 UserEntity user = new UserEntity();
@@ -95,7 +98,7 @@ public class ServiceController extends Controller {
      * @return A {@link Uni} of {@link ChannelEntity}
      */
     private Uni<ChannelEntity> findChannel(final String channelHash) {
-        return channelRepo.find("hash = ?1", channelHash).firstResult()
+        return channelRepo.find(HASH_QUERY, channelHash).firstResult()
             .onItem().ifNotNull().transform(user -> user)
             .onItem().ifNull().continueWith(() -> {
                 ChannelEntity channel = new ChannelEntity();
@@ -107,10 +110,12 @@ public class ServiceController extends Controller {
     /**
      * Gets all messages.
      *
+     * @param channelHash A {@link String} hash of the channel
      * @return A {@link Uni} of {@link List} of {@link MessageEntity}
      */
-    public Uni<List<MessageEntity>> getAllMessages() {
-        return messageRepo.findAll().list();
+    public Uni<List<MessageEntity>> getMessages(final String channelHash) {
+        return channelRepo.find(HASH_QUERY, channelHash).firstResult()
+            .onItem().ifNotNull().transform(ChannelEntity::getMessages);
     }
 
     /**

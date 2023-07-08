@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -54,7 +55,7 @@ public class ChannelEntity extends PanacheEntityBase {
     private String hash;
 
     /** Massages. */
-    @OneToMany(mappedBy = "channel")
+    @OneToMany(mappedBy = "channel", fetch = FetchType.EAGER)
     @JsonBackReference
     private List<MessageEntity> messages;
 
