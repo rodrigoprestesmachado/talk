@@ -16,28 +16,32 @@
  */
 package dev.orion.talk.usecase;
 
-import dev.orion.talk.model.Message;
+import dev.orion.talk.model.Channel;
 
 /**
- * Message use case.
+ * Channel use case.
  */
-public class MessageUC {
+public class ChannelUC {
 
     /**
-     * Create a message.
+     * Create a channel.
      *
-     * @param text  Message text.
-     * @return Message object.
+     * @param name  Channel name.
+     * @param hash  Channel hash.
+     * @return Channel object.
      */
-    public Message createMessage(final String text) {
-        Message message = null;
-        if (text == null || text.isEmpty()) {
-            throw new IllegalArgumentException("The text can't be empty");
+    public Channel createChannel(final String name, final String hash) {
+        Channel channel = null;
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("The name can't be empty");
         } else {
-            message = new Message();
-            message.setText(text);
+            channel = new Channel();
+            if (hash != null) {
+               channel.setHash(hash);
+            }
+            channel.setName(name);
         }
-        return message;
+        return channel;
     }
 
 }

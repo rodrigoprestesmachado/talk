@@ -16,31 +16,123 @@
  */
 package dev.orion.talk.model;
 
+import java.time.Instant;
 import java.util.UUID;
 
+/**
+ * Message model.
+ */
 public class Message {
 
+    /** Message text. */
     private String text;
+
+    /** Message hash. */
     private String hash;
 
+    /** The owner of the message. */
+    private User user;
+
+    /** The owner of the message. */
+    private Channel channel;
+
+    /** The timestamp of the message. */
+    private Instant timestamp;
+
+    /**
+     * Message constructor.
+     */
     public Message() {
         this.hash = UUID.randomUUID().toString();
     }
 
+    /**
+     * Get message text.
+     *
+     * @return Message text.
+     */
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
+    /**
+     * Set message text.
+     *
+     * @param text Message text.
+     */
+    public void setText(final String text) {
         this.text = text;
     }
 
+    /**
+     * Get message hash.
+     *
+     * @return Message hash.
+     */
     public String getHash() {
         return hash;
     }
 
-    public void setHash(String hash) {
+    /**
+     * Set message hash.
+     *
+     * @param hash Message hash.
+     */
+    public void setHash(final String hash) {
         this.hash = hash;
+    }
+
+    /**
+     * Get message owner.
+     *
+     * @return Message owner.
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * Set message owner.
+     *
+     * @param user Message owner.
+     */
+    public void setUser(final User user) {
+        this.user = user;
+    }
+
+    /**
+     * Get message channel.
+     * @return Message channel.
+     */
+    public Channel getChannel() {
+        return channel;
+    }
+
+    /**
+     * Set message channel.
+     *
+     * @param channel Message channel.
+     */
+    public void setChannel(final Channel channel) {
+        this.channel = channel;
+    }
+
+    /**
+     * Get message timestamp.
+     *
+     * @return Message timestamp.
+     */
+    public Instant getTimestamp() {
+        return timestamp;
+    }
+
+    /**
+     * Set message timestamp.
+     *
+     * @param timestamp Message timestamp.
+     */
+    public void setTimestamp(final Instant timestamp) {
+        this.timestamp = timestamp;
     }
 
 }

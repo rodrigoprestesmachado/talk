@@ -24,9 +24,10 @@ import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.junit.QuarkusTest;
 import io.vertx.core.cli.annotations.Description;
+import jakarta.ws.rs.core.Response;
 
 @QuarkusTest
-public class TalkTest {
+public class TalkIT {
 
     @Test
     @Order(1)
@@ -34,9 +35,11 @@ public class TalkTest {
     void createMessage() {
         given().when()
             .param("text", "hello world")
+            .param("userHash", "123456789")
+            .param("channelHash", "123456789")
             .post("/talk/message/create")
         .then()
-            .statusCode(200)
+            .statusCode(Response.Status.OK.getStatusCode())
             .body("text", is("hello world"));
     }
 
@@ -48,7 +51,7 @@ public class TalkTest {
             .param("text", "")
             .post("/talk/message/create")
         .then()
-            .statusCode(400);
+             .statusCode(Response.Status.BAD_REQUEST.getStatusCode());
     }
 
 }

@@ -18,35 +18,49 @@ package dev.orion.talk.adapters.controllers;
 
 import org.modelmapper.ModelMapper;
 
-import dev.orion.talk.adapters.persistence.entity.MessageEntity;
+import dev.orion.talk.adapters.persistence.repository.ChannelRepository;
 import dev.orion.talk.adapters.persistence.repository.MessageRepository;
-import dev.orion.talk.model.Message;
+import dev.orion.talk.adapters.persistence.repository.UserRepository;
+import dev.orion.talk.usecase.ChannelUC;
 import dev.orion.talk.usecase.MessageUC;
-import io.smallrye.mutiny.Uni;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
-@ApplicationScoped
+/**
+ * Controller.
+ */
 public class Controller {
 
+    /**
+     * Message repository.
+     */
     @Inject
-    MessageRepository repo;
-
-    MessageUC uc = new MessageUC();
-
-    ModelMapper mapper = new ModelMapper();
+    protected MessageRepository messageRepo;
 
     /**
-     * Creates a message.
-     *
-     * @param text A {@link String} with the message text
-     * @return A {@link Uni} of {@link MessageEntity}
+     * User repository.
      */
-    public Uni<MessageEntity> createMessage(String text) {
-        Message message = uc.createMessage(text);
-        MessageEntity e = mapper.map(message, MessageEntity.class);
-        return repo.persistMessage(e)
-            .onItem().ifNotNull().transform(m -> m);
-    }
+    @Inject
+    protected UserRepository userRepo;
+
+    /**
+     * Channel repository.
+     */
+    @Inject
+    protected ChannelRepository channelRepo;
+
+    /**
+     * Channel use case.
+     */
+    protected ChannelUC channelUC = new ChannelUC();
+
+    /**
+     * Message use case.
+     */
+    protected MessageUC messageUC = new MessageUC();
+
+    /**
+     * Model mapper.
+     */
+    protected ModelMapper mapper = new ModelMapper();
 
 }

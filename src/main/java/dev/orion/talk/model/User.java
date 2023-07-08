@@ -14,30 +14,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.orion.talk.usecase;
+package dev.orion.talk.model;
 
-import dev.orion.talk.model.Message;
+import java.util.UUID;
 
 /**
- * Message use case.
+ * User model.
  */
-public class MessageUC {
+public class User {
+
+    /** Hash of the user. */
+    private String hash;
 
     /**
-     * Create a message.
-     *
-     * @param text  Message text.
-     * @return Message object.
+     * Default constructor.
      */
-    public Message createMessage(final String text) {
-        Message message = null;
-        if (text == null || text.isEmpty()) {
-            throw new IllegalArgumentException("The text can't be empty");
-        } else {
-            message = new Message();
-            message.setText(text);
-        }
-        return message;
+    public User() {
+        this.hash = UUID.randomUUID().toString();
+    }
+
+    /**
+     * Get user hash.
+     *
+     * @return User hash.
+     */
+    public String getHash() {
+        return hash;
+    }
+
+    /**
+     * Set user hash.
+     *
+     * @param hash User hash.
+     */
+    public void setHash(final String hash) {
+        this.hash = hash;
     }
 
 }

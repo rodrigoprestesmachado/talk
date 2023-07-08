@@ -16,22 +16,93 @@
  */
 package dev.orion.talk.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+/**
+ * Channel model.
+ */
 public class Channel {
 
+    /** Channel name. */
+    private String name;
+
+    /** Channel hash. */
     private String hash;
 
+    /** Messages. */
+    private List<Message> messages;
+
+    /**
+     * Constructor.
+     */
+    public Channel() {
+        this.hash = UUID.randomUUID().toString();
+        this.messages = new ArrayList<>();
+    }
+
+    /**
+     * Get channel hash.
+     *
+     * @return Channel hash.
+     */
     public String getHash() {
         return hash;
     }
 
-    public void setHash(String hash) {
+    /**
+     * Set channel hash.
+     *
+     * @param hash Channel hash.
+     */
+    public void setHash(final String hash) {
         this.hash = hash;
     }
 
-    public Channel() {
-        this.hash = UUID.randomUUID().toString();
+    /**
+     * Get channel name.
+     *
+     * @return Channel name.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Set channel name.
+     *
+     * @param name Channel name.
+     */
+    public void setName(final String name) {
+        this.name = name;
+    }
+
+    /**
+     * Get messages.
+     *
+     * @return A list of messages.
+     */
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    /**
+     * Set messages.
+     *
+     * @param messages A list of messages.
+     */
+    public void setMessages(final List<Message> messages) {
+        this.messages = messages;
+    }
+
+    /**
+     * Add message.
+     *
+     * @param message A Message object.
+     */
+    public void addMessage(final Message message) {
+        this.messages.add(message);
     }
 
 }

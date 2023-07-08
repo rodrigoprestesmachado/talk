@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.orion.talk.web;
+package dev.orion.talk.web.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +25,12 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
 /**
- * Frameworks and Drivers layer of Clean Architecture
+ * Frameworks and Drivers layer of Clean Architecture.
  */
 public class ServiceException extends WebApplicationException {
 
     /**
-     * Service Exception constructor.
+     * ServiceException constructor.
      *
      * @param message : The message of the exception
      * @param status  : The HTTP error code
@@ -48,9 +48,8 @@ public class ServiceException extends WebApplicationException {
      * @return A Response object
      */
     private static Response init(final String message, final Status status) {
-        List<Map<String,String>> violations = new ArrayList<>();
-        violations.add(Map.of("message",message));
-
+        List<Map<String, String>> violations = new ArrayList<>();
+        violations.add(Map.of("message", message));
         return Response
             .status(status)
             .entity(Map.of("violations", violations))

@@ -16,25 +16,40 @@
  */
 package dev.orion.talk.adapters.persistence.repository;
 
-import dev.orion.talk.adapters.persistence.entity.MessageEntity;
+import dev.orion.talk.adapters.persistence.entity.ChannelEntity;
 import io.quarkus.hibernate.reactive.panache.Panache;
 import io.quarkus.hibernate.reactive.panache.PanacheRepository;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 
 /**
- * A {@link PanacheRepository} for {@link MessageEntity}.
+ * A {@link PanacheRepository} for {@link ChannelEntity}.
  */
 @ApplicationScoped
-public class MessageRepository implements PanacheRepository<MessageEntity> {
+public class ChannelRepository implements PanacheRepository<ChannelEntity> {
 
     /**
-     * Persists a message entity.
+     * Persists a channel entity.
      *
-     * @param message A {@link MessageEntity} to be persisted
-     * @return  A {@link Uni} of {@link MessageEntity}
+     * @param channel A {@link ChannelEntity}
+     * @return A {@link Uni} of {@link ChannelEntity}
      */
-    public Uni<MessageEntity> save(final MessageEntity message) {
-        return Panache.<MessageEntity>withTransaction(message::persist);
+    public Uni<ChannelEntity> save(final ChannelEntity channel) {
+        return findByHash(channel.getHash())
+            .onItem().ifNotNull().transform(entity -> entity)
+            .onItem().ifNull().switchTo(
+                Panache.<ChannelEntity>withTransaction(channel::persist)
+            );
     }
+
+    /**
+     * Find a channel by hash.
+     *
+     * @param hash
+     * @return A {@link Uni} of {@link ChannelEntity}
+     */
+    private Uni<ChannelEntity> findByHash(final String hash) {
+        return find("hash", hash).firstResult();
+    }
+
 }

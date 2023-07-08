@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket</title>
+</head>
+
+<body>
+
+    WebSocket: <input type="text" id="inputMessage" onblur="sendMessage()" />
+
+    <span id="board"></span>
+
+    <script>
+        // Create a new WebSocket object.
+        const socket = new WebSocket('ws://localhost:8080/talk/12345/54321');
+
+        socket.onopen = function () {
+            console.log('Establish connection');
+            socket.send("_ready_");
+        };
+
+        socket.onmessage = function (event) {
+            const message = event.data;
+            var board = document.getElementById("board");
+            board.innerHTML = board.innerHTML + "<br>" + message;
+            console.log('Message:', message);
+            //socket.close();
+        };
+
+        socket.onclose = function (event) {
+            console.log('Closed connection. Code:', event.code);
+        };
+
+        socket.onerror = function (error) {
+            console.error('Error:', error);
+        };
+
+        function sendMessage() {
+            var inputMessage = document.getElementById("inputMessage");
+            socket.send(inputMessage.value);
+            inputMessage.value = "";
+        }
+
+    </script>
+
+</body>
+
+</html>

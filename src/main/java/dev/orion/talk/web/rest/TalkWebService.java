@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.orion.talk.web;
+package dev.orion.talk.web.rest;
 
-import dev.orion.talk.adapters.controllers.Controller;
+import dev.orion.talk.adapters.controllers.ServiceController;
 import dev.orion.talk.adapters.persistence.entity.MessageEntity;
 import io.smallrye.mutiny.Uni;
 import jakarta.inject.Inject;
@@ -29,26 +29,36 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+/**
+ * Talk web service.
+ */
 @Path("/talk/message")
 @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 @Produces(MediaType.APPLICATION_JSON)
 public class TalkWebService {
 
+    /**
+     * Controller.
+     */
     @Inject
-    Controller controller;
+    private ServiceController controller;
 
     /**
      * Create a message endpoint.
      *
      * @param text the message text
+     * @param userHash the user hash
+     * @param channelHash the channel hash
      * @return the message created
      */
     @POST
     @Path("/create")
     public Uni<MessageEntity> create(
-            @FormParam("text") @NotEmpty final String text) {
+            @FormParam("text") @NotEmpty final String text,
+            @FormParam("userHash") @NotEmpty final String userHash,
+            @FormParam("channelHash") @NotEmpty final String channelHash) {
         try {
-            return controller.createMessage(text)
+            return controller.createMessage(text, userHash, channelHash)
                 .log()
                 .onItem().ifNotNull()
                 .transform(message -> message)

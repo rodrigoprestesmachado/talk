@@ -16,59 +16,63 @@
  */
 package dev.orion.talk.adapters.persistence.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Message entity.
+ * Channel entity.
  */
 @Entity
 @Getter @Setter
-@Table(name = "message")
-public class MessageEntity extends PanacheEntityBase {
+@Table(name = "channel")
+public class ChannelEntity extends PanacheEntityBase {
 
     /**
-     * Message id.
+     * Channel id.
      */
     @Id
     @GeneratedValue
     @JsonIgnore
     private Long id;
 
-    /**
-     * Message text.
-     */
-    private String text;
+    /** Channel name. */
+    private String name;
 
-    /**
-     * Message hash.
-     */
+    /** Channel hash. */
     private String hash;
 
-    /**
-     * The owner of the message.
-     */
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
+    /** Massages. */
+    @OneToMany(mappedBy = "channel", fetch = FetchType.EAGER)
+    @JsonBackReference
+    private List<MessageEntity> messages;
 
     /**
-     * The channel of the message.
+     * Constructor.
      */
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
-    private ChannelEntity channel;
+    public ChannelEntity() {
+        this.messages = new ArrayList<>();
+    }
+
+    /**
+     * Add message to channel.
+     *
+     * @param message Message to add.
+     */
+    public void addMessage(final MessageEntity message) {
+        messages.add(message);
+    }
 
 }
