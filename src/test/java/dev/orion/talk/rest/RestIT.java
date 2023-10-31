@@ -26,9 +26,15 @@ import io.quarkus.test.junit.QuarkusTest;
 import io.vertx.core.cli.annotations.Description;
 import jakarta.ws.rs.core.Response;
 
+/**
+ * Integration tests for the REST API of the Talk application.
+ */
 @QuarkusTest
-public class TalkIT {
+class RestIT {
 
+    /**
+     * Test case for creating a message.
+     */
     @Test
     @Order(1)
     @Description("Create a message")
@@ -43,6 +49,9 @@ public class TalkIT {
             .body("text", is("hello world"));
     }
 
+    /**
+     * Test case for creating an empty message.
+     */
     @Test
     @Order(2)
     @Description("Create an empty message")

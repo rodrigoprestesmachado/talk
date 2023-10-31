@@ -35,10 +35,15 @@ public class ChannelRepository implements PanacheRepository<ChannelEntity> {
      * @return A {@link Uni} of {@link ChannelEntity}
      */
     public Uni<ChannelEntity> save(final ChannelEntity channel) {
-        return findByHash(channel.getHash())
+        return findByName(channel.getName())
             .onItem().ifNotNull().transform(entity -> entity)
             .onItem().ifNull().switchTo(
-                Panache.<ChannelEntity>withTransaction(channel::persist)
+                findByHash(channel.getHash())
+                    .onItem().ifNotNull().transform(entity -> entity)
+                    .onItem().ifNull().switchTo(
+                        Panache.withTransaction(() -> persist(channel))
+                            .onItem().transform(entity -> entity)
+                    )
             );
     }
 
@@ -50,6 +55,16 @@ public class ChannelRepository implements PanacheRepository<ChannelEntity> {
      */
     private Uni<ChannelEntity> findByHash(final String hash) {
         return find("hash", hash).firstResult();
+    }
+
+    /**
+     * Find a channel by name.
+     *
+     * @param name
+     * @return A {@link Uni} of {@link ChannelEntity}
+     */
+    private Uni<ChannelEntity> findByName(final String name) {
+        return find("name", name).firstResult();
     }
 
 }

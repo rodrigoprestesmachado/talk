@@ -40,6 +40,15 @@ public class ServiceException extends WebApplicationException {
     }
 
     /**
+     * ServiceException constructor.
+     *
+     * @param message : The message of the exception
+     */
+    public ServiceException(final String message) {
+        super(init(message, Response.Status.BAD_REQUEST));
+    }
+
+    /**
      * A static method to init the message.
      *
      * @param message : An error message

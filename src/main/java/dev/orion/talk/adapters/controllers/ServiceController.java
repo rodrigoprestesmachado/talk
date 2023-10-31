@@ -24,6 +24,7 @@ import dev.orion.talk.adapters.persistence.entity.MessageEntity;
 import dev.orion.talk.adapters.persistence.entity.UserEntity;
 import dev.orion.talk.model.Channel;
 import dev.orion.talk.model.Message;
+import dev.orion.talk.web.rest.ServiceException;
 import io.quarkus.hibernate.reactive.panache.common.WithSession;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -37,6 +38,26 @@ public class ServiceController extends Controller {
 
     /** Basic query for hash. */
     private static final String HASH_QUERY = "hash = ?1";
+
+    /**
+     * Creates a channel.
+     *
+     * @param channel A {@link ChannelEntity} with the channel
+     * @return  A {@link Uni} of {@link Channel}
+     */
+    public Uni<ChannelEntity> addChannel(final ChannelEntity channel) {
+        Uni<ChannelEntity> channelEntity = null;
+        try {
+            Channel model = channelUC.createChannel(channel.getName(),
+                channel.getHash());
+            channelEntity = channelRepo.save(mapper.map(model, ChannelEntity.class))
+                .onItem().ifNotNull().transform(c -> c)
+                .log();
+        } catch (Exception e) {
+            channelEntity =  Uni.createFrom().item(new ChannelEntity());
+        }
+        return channelEntity;
+    }
 
     /**
      * Creates a message.
@@ -76,6 +97,17 @@ public class ServiceController extends Controller {
     }
 
     /**
+     * Gets all messages.
+     *
+     * @param channelHash A {@link String} hash of the channel
+     * @return A {@link Uni} of {@link List} of {@link MessageEntity}
+     */
+    public Uni<List<MessageEntity>> getMessages(final String channelHash) {
+        return channelRepo.find(HASH_QUERY, channelHash).firstResult()
+            .onItem().ifNotNull().transform(ChannelEntity::getMessages);
+    }
+
+    /**
      * Finds a user by hash.
      *
      * @param userHash A {@link String} hash of the user
@@ -107,28 +139,5 @@ public class ServiceController extends Controller {
             });
     }
 
-    /**
-     * Gets all messages.
-     *
-     * @param channelHash A {@link String} hash of the channel
-     * @return A {@link Uni} of {@link List} of {@link MessageEntity}
-     */
-    public Uni<List<MessageEntity>> getMessages(final String channelHash) {
-        return channelRepo.find(HASH_QUERY, channelHash).firstResult()
-            .onItem().ifNotNull().transform(ChannelEntity::getMessages);
-    }
-
-    /**
-     * Creates a channel.
-     *
-     * @param channel A {@link ChannelEntity} with the channel
-     * @return  A {@link Uni} of {@link Channel}
-     */
-    public Uni<ChannelEntity> addChannel(final ChannelEntity channel) {
-        Channel model = channelUC.createChannel(channel.getName(),
-            channel.getHash());
-        return channelRepo.save(mapper.map(model, ChannelEntity.class))
-            .onItem().ifNotNull().transform(c -> c);
-    }
 
 }

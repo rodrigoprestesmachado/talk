@@ -16,6 +16,8 @@
  */
 package dev.orion.talk.adapters.persistence.entity;
 
+import java.time.Instant;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -56,6 +58,9 @@ public class MessageEntity extends PanacheEntityBase {
      * Message hash.
      */
     private String hash;
+
+     /** The timestamp of the message. */
+    private Instant timestamp;
 
     /**
      * The owner of the message.
