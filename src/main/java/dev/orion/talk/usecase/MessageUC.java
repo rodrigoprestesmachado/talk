@@ -16,6 +16,8 @@
  */
 package dev.orion.talk.usecase;
 
+import java.time.Instant;
+
 import dev.orion.talk.model.Message;
 
 /**
@@ -36,6 +38,7 @@ public class MessageUC {
         } else {
             message = new Message();
             message.setText(text);
+            message.setTimestamp(Instant.now());
         }
         return message;
     }

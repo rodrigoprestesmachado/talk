@@ -26,6 +26,7 @@ import org.eclipse.microprofile.graphql.Query;
 import dev.orion.talk.adapters.controllers.ServiceController;
 import dev.orion.talk.adapters.persistence.entity.ChannelEntity;
 import dev.orion.talk.adapters.persistence.entity.MessageEntity;
+import dev.orion.talk.web.rest.ServiceException;
 import io.smallrye.mutiny.Uni;
 import jakarta.inject.Inject;
 
@@ -42,6 +43,18 @@ public class GraphQl {
     private ServiceController controller;
 
     /**
+     * Create a Channel thought Graphql.
+     *
+     * @param channel Channel to be created.
+     * @return Channel object.
+     */
+    @Mutation
+    public Uni<ChannelEntity> createChannel(final ChannelEntity channel) {
+        return controller.addChannel(channel)
+            .onItem().ifNotNull().transform(m -> m);
+    }
+
+    /**
      * Create a Message thought Graphql.
      *
      * @param text        Message text.
@@ -54,18 +67,12 @@ public class GraphQl {
             final String text,
             final String userHash,
             final String channelHash) {
-        return controller.createMessage(text, userHash, channelHash);
-    }
 
-    /**
-     * Create a Channel thought Graphql.
-     *
-     * @param channel Channel to be created.
-     * @return Channel object.
-     */
-    @Mutation
-    public Uni<ChannelEntity> createChannel(final ChannelEntity channel) {
-        return controller.addChannel(channel);
+        return controller.createMessage(text, userHash, channelHash)
+                .onItem().ifNotNull().transform(m -> m)
+                .onItem().ifNull().failWith(() -> {
+                    throw new ServiceException("Message not created");
+                });
     }
 
     /**

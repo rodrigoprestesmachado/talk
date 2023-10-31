@@ -26,9 +26,15 @@ import io.restassured.http.ContentType;
 import io.vertx.core.cli.annotations.Description;
 import jakarta.ws.rs.core.Response;
 
+/**
+ * Integration tests for GraphQL queries and mutations.
+ */
 @QuarkusTest
-public class GraphQlIT {
+class GraphQlIT {
 
+    /**
+     * Test case for creating a channel through GraphQL.
+     */
     @Test
     @Order(1)
     @Description("Create a Channel")
@@ -53,6 +59,9 @@ public class GraphQlIT {
             .statusCode(Response.Status.OK.getStatusCode());
     }
 
+    /**
+     * Test case for querying all messages through GraphQL.
+     */
     @Test
     @Order(2)
     @Description("Query all messages through GraphQL")
