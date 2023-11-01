@@ -6,9 +6,9 @@
   </template>
   <template v-else>
     <div>
-        Channel: {{ channel.name }}
+        <h1> Channel: {{ channel.name }}</h1>
         <br />
-        Hash: {{ channel.hash }}
+        <h2>Hash: {{ channel.hash }}</h2>
         <br />
         Send message:
     </div>
