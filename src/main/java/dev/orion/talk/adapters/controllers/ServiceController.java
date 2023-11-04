@@ -45,18 +45,21 @@ public class ServiceController extends Controller {
      * @param channel A {@link ChannelEntity} with the channel
      * @return  A {@link Uni} of {@link Channel}
      */
-    public Uni<ChannelEntity> addChannel(final ChannelEntity channel) {
-        Uni<ChannelEntity> channelEntity = null;
-        try {
-            Channel model = channelUC.createChannel(channel.getName(),
-                channel.getHash());
-            channelEntity = channelRepo.save(mapper.map(model, ChannelEntity.class))
-                .onItem().ifNotNull().transform(c -> c)
-                .log();
-        } catch (Exception e) {
-            channelEntity =  Uni.createFrom().item(new ChannelEntity());
-        }
-        return channelEntity;
+    public Uni<ChannelEntity> addChannel(
+            final ChannelEntity channel,
+            final UserEntity user) {
+
+        return this.findUser(user.getHash())
+            .onItem().ifNotNull().transformToUni(u -> {
+                Channel model = channelUC.createChannel(
+                    channel.getName(),
+                    channel.getHash());
+                ChannelEntity ce = mapper.map(model, ChannelEntity.class);
+                ce.setUser(u);
+                return channelRepo.save(ce)
+                    .log()
+                    .onItem().ifNotNull().transform(c -> c);
+            });
     }
 
     /**

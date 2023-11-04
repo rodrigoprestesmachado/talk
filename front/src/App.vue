@@ -2,6 +2,7 @@
 </script>
 
 <template>
+    <orion-users />
     <orion-talk />
 </template>
 
