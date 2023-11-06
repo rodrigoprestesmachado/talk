@@ -1,15 +1,19 @@
 <template>
     <template v-if="!login">
-        <el-input v-model="name" placeholder="Nome" />
-        <el-input v-model="email" placeholder="E-mail" />
+        <el-input v-model="name" placeholder="Nome" id="name" />
+        <el-input v-model="email" placeholder="E-mail" id="email" />
         <el-input
             v-model="password"
             type="password"
             placeholder="Senha"
             show-password
+            id="password"
         />
         <el-button @click="createUser">Criar usuário</el-button>
         <br/>
+    </template>
+    <template v-else>
+        Autenticado
     </template>
 </template>
 
@@ -61,4 +65,5 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

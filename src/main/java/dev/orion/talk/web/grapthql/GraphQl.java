@@ -76,6 +76,7 @@ public class GraphQl {
      * Create a Message thought Graphql.
      *
      * @param text        Message text.
+     * @param userName    User name.
      * @param userHash    User hash.
      * @param channelHash Channel hash.
      * @return Message object.
@@ -83,10 +84,11 @@ public class GraphQl {
     @Mutation
     public Uni<MessageEntity> createMessage(
             final String text,
+            final String userName,
             final String userHash,
             final String channelHash) {
 
-        return controller.createMessage(text, userHash, channelHash)
+        return controller.createMessage(text, userName, userHash, channelHash)
                 .onItem().ifNotNull().transform(m -> m)
                 .onItem().ifNull().failWith(() -> {
                     throw new ServiceException("Message not created");

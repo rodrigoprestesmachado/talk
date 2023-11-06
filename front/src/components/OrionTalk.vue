@@ -1,26 +1,28 @@
 <template>
-  <template v-if="connected == false">
-    <el-input v-model="channelName" placeholder="Nome do canal" />
-    <el-button @click="createChannel">Criar canal</el-button>
-    {{ error }}
-  </template>
-  <template v-else>
-    <el-text class="mx-1" size="large">Canal: {{ channel.name }}</el-text>
-    <br/>
-    <el-text class="mx-1" size="large">Hash do canal: {{ channel.hash }}</el-text>
-    <br/>
-    <el-text class="mx-1" size="large">Usuário: {{ userName }}</el-text>
-    <br/>
-    <el-input v-model="message" placeholder="Mensagem" />
-    <el-button @click="createMessage">Enviar</el-button>
-    <br/>
-    <template v-for="message in messages" :key="message.hash">
-        <el-text class="mx-1">
-            {{ message.user.hash }}: {{ message.text }} - {{ message.timestamp }}
-        </el-text>
-        <br/>
+    <template v-if="connected == false">
+        <el-input v-model="channelName" placeholder="Nome do canal" id="channelName" />
+        <el-button @click="createChannel">Criar canal</el-button>
+        {{ error }}
     </template>
-  </template>
+    <template v-else>
+        <el-text class="mx-1" size="large">Canal: {{ channel.name }}</el-text>
+        <br/>
+        <el-text class="mx-1" size="large">Hash do canal: {{ channel.hash }}</el-text>
+        <br/>
+        <el-text class="mx-1" size="large">Usuário: {{ userName }}</el-text>
+        <br/>
+        <el-input v-model="message" placeholder="Mensagem" id="message" />
+        <el-button @click="createMessage" id="send">Enviar</el-button>
+        <br/>
+        <template v-for="message in messages" :key="message.hash">
+            <el-avatar> {{ message.user.name }} </el-avatar>
+            <br/>
+            <el-text class="mx-1">
+                {{ message.timestamp }} - {{ message.text }}
+            </el-text>
+            <br/>
+        </template>
+    </template>
 </template>
 
 <script>
@@ -112,6 +114,7 @@ export default {
                                 mutation addMessage {
                                     createMessage(
                                         text : "${this.message}"
+                                        userName: "${this.userName}"
                                         userHash: "${this.userHash}"
                                         channelHash: "${this.channel.hash}"
                                     )
@@ -153,7 +156,7 @@ export default {
                                     hash
                                     timestamp
                                     user {
-                                        hash
+                                        name
                                     }
                                 }
                             }
@@ -181,4 +184,6 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

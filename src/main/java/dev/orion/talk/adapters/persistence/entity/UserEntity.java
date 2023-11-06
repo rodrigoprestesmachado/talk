@@ -48,4 +48,9 @@ public class UserEntity extends PanacheEntityBase {
      */
     private String hash;
 
+    /**
+     * user name.
+     */
+    private String name;
+
 }

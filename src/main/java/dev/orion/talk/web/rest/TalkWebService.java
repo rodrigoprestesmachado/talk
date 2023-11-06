@@ -47,6 +47,7 @@ public class TalkWebService {
      * Create a message endpoint.
      *
      * @param text the message text
+     * @param userName the user name
      * @param userHash the user hash
      * @param channelHash the channel hash
      * @return the message created
@@ -55,10 +56,12 @@ public class TalkWebService {
     @Path("/create")
     public Uni<MessageEntity> create(
             @FormParam("text") @NotEmpty final String text,
+            @FormParam("userName") @NotEmpty final String userName,
             @FormParam("userHash") @NotEmpty final String userHash,
             @FormParam("channelHash") @NotEmpty final String channelHash) {
         try {
-            return controller.createMessage(text, userHash, channelHash)
+            return controller.createMessage(
+                text, userName, userHash, channelHash)
                 .log()
                 .onItem().ifNotNull()
                 .transform(message -> message)
