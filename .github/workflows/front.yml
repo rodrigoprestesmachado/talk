@@ -1,10 +1,11 @@
 name: Frontend
 
 on:
-    workflow_run:
-      workflows: ["Backend"]
-      types:
-        - completed
+    push:
+      branches:
+        - main
+    pull_request:
+      types: [opened, synchronize, reopened]
 
 jobs:
   build:
