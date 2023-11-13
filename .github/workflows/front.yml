@@ -46,14 +46,18 @@ jobs:
             cd talk
             ./mvnw compile quarkus:dev &
             cd ..
-    - name: Build Frontend
+    - name: Run Talk frontend
       run: |
             cd talk/front
             npm install
             npm run dev &
             cd ../..
 
-    - name: Cypress run
+    - name: wait for services to start
+      run: |
+            sleep 20
+
+    - name: Run Cypress
       run: |
             cd talk/front
             npm install
