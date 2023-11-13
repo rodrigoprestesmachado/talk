@@ -24,7 +24,6 @@ import dev.orion.talk.adapters.persistence.entity.MessageEntity;
 import dev.orion.talk.adapters.persistence.entity.UserEntity;
 import dev.orion.talk.model.Channel;
 import dev.orion.talk.model.Message;
-import dev.orion.talk.web.rest.ServiceException;
 import io.quarkus.hibernate.reactive.panache.common.WithSession;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -45,30 +44,35 @@ public class ServiceController extends Controller {
      * @param channel A {@link ChannelEntity} with the channel
      * @return  A {@link Uni} of {@link Channel}
      */
-    public Uni<ChannelEntity> addChannel(final ChannelEntity channel) {
-        Uni<ChannelEntity> channelEntity = null;
-        try {
-            Channel model = channelUC.createChannel(channel.getName(),
-                channel.getHash());
-            channelEntity = channelRepo.save(mapper.map(model, ChannelEntity.class))
-                .onItem().ifNotNull().transform(c -> c)
-                .log();
-        } catch (Exception e) {
-            channelEntity =  Uni.createFrom().item(new ChannelEntity());
-        }
-        return channelEntity;
+    public Uni<ChannelEntity> addChannel(
+            final ChannelEntity channel,
+            final UserEntity user) {
+
+        return this.findUser(user.getHash())
+            .onItem().ifNotNull().transformToUni(u -> {
+                Channel model = channelUC.createChannel(
+                    channel.getName(),
+                    channel.getHash());
+                ChannelEntity ce = mapper.map(model, ChannelEntity.class);
+                ce.setUser(u);
+                return channelRepo.save(ce)
+                    .log()
+                    .onItem().ifNotNull().transform(c -> c);
+            });
     }
 
     /**
      * Creates a message.
      *
      * @param text        A {@link String} with the message text
+     * @param userName    A {@link String} with the user name
      * @param userHash    A {@link String} with the user hash
      * @param channelHash A {@link String} with the channel hash
      * @return A {@link Uni} of {@link MessageEntity}
      */
     public Uni<MessageEntity> createMessage(final String text,
-            final String userHash, final String channelHash) {
+        final String userName, final String userHash,
+        final String channelHash) {
         return findUser(userHash)
                 .onItem().transformToUni(user -> {
                     return findChannel(channelHash)
@@ -86,6 +90,7 @@ public class ServiceController extends Controller {
 
                                 // Set message channel and user
                                 messageEntity.setChannel(channel);
+                                user.setName(userName);
                                 messageEntity.setUser(user);
                                 channel.addMessage(messageEntity);
 

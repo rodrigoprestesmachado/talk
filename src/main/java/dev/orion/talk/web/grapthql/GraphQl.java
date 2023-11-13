@@ -22,18 +22,25 @@ import org.eclipse.microprofile.graphql.Description;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Mutation;
 import org.eclipse.microprofile.graphql.Query;
+import org.eclipse.microprofile.jwt.Claim;
+import org.eclipse.microprofile.jwt.Claims;
 
 import dev.orion.talk.adapters.controllers.ServiceController;
 import dev.orion.talk.adapters.persistence.entity.ChannelEntity;
 import dev.orion.talk.adapters.persistence.entity.MessageEntity;
+import dev.orion.talk.adapters.persistence.entity.UserEntity;
 import dev.orion.talk.web.rest.ServiceException;
 import io.smallrye.mutiny.Uni;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 /**
  * GraphQl.
  */
 @GraphQLApi
+@RequestScoped
+@RolesAllowed("user")
 public class GraphQl {
 
     /**
@@ -43,14 +50,25 @@ public class GraphQl {
     private ServiceController controller;
 
     /**
-     * Create a Channel thought Graphql.
+     * User email.
+     */
+    @Inject
+    @Claim(standard = Claims.email)
+    private String email;
+
+    /**
+     * Creates a new channel with the given channel entity and user entity.
      *
-     * @param channel Channel to be created.
-     * @return Channel object.
+     * @param channel the channel entity to create
+     * @param user the user entity creating the channel
+     * @return a Uni that emits the created channel entity, or null if the
+     * creation failed
      */
     @Mutation
-    public Uni<ChannelEntity> createChannel(final ChannelEntity channel) {
-        return controller.addChannel(channel)
+    public Uni<ChannelEntity> createChannel(
+        final ChannelEntity channel,
+        final UserEntity user) {
+        return controller.addChannel(channel, user)
             .onItem().ifNotNull().transform(m -> m);
     }
 
@@ -58,6 +76,7 @@ public class GraphQl {
      * Create a Message thought Graphql.
      *
      * @param text        Message text.
+     * @param userName    User name.
      * @param userHash    User hash.
      * @param channelHash Channel hash.
      * @return Message object.
@@ -65,10 +84,11 @@ public class GraphQl {
     @Mutation
     public Uni<MessageEntity> createMessage(
             final String text,
+            final String userName,
             final String userHash,
             final String channelHash) {
 
-        return controller.createMessage(text, userHash, channelHash)
+        return controller.createMessage(text, userName, userHash, channelHash)
                 .onItem().ifNotNull().transform(m -> m)
                 .onItem().ifNull().failWith(() -> {
                     throw new ServiceException("Message not created");

@@ -34,6 +34,9 @@ public class Channel {
     /** Messages. */
     private List<Message> messages;
 
+    /** User. */
+    private User user;
+
     /**
      * Constructor.
      */
@@ -103,6 +106,24 @@ public class Channel {
      */
     public void addMessage(final Message message) {
         this.messages.add(message);
+    }
+
+    /**
+     * Gets the user associated with this channel.
+     *
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * Sets the user associated with this channel.
+     *
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }
