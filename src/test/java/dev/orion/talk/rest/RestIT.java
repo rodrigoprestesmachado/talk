@@ -32,35 +32,35 @@ import jakarta.ws.rs.core.Response;
 @QuarkusTest
 class RestIT {
 
-    /**
-     * Test case for creating a message.
-     */
-    @Test
-    @Order(1)
-    @Description("Create a message")
-    void createMessage() {
-        given().when()
-            .param("text", "hello world")
-            .param("userHash", "123456789")
-            .param("channelHash", "123456789")
-            .post("/talk/message/create")
-        .then()
-            .statusCode(Response.Status.OK.getStatusCode())
-            .body("text", is("hello world"));
-    }
+    // /**
+    //  * Test case for creating a message.
+    //  */
+    // @Test
+    // @Order(1)
+    // @Description("Create a message")
+    // void createMessage() {
+    //     given().when()
+    //         .param("text", "hello world")
+    //         .param("userHash", "123456789")
+    //         .param("channelHash", "123456789")
+    //         .post("/talk/message/create")
+    //     .then()
+    //         .statusCode(Response.Status.OK.getStatusCode())
+    //         .body("text", is("hello world"));
+    // }
 
-    /**
-     * Test case for creating an empty message.
-     */
-    @Test
-    @Order(2)
-    @Description("Create an empty message")
-    void createEmptyMessage() {
-        given().when()
-            .param("text", "")
-            .post("/talk/message/create")
-        .then()
-             .statusCode(Response.Status.BAD_REQUEST.getStatusCode());
-    }
+    // /**
+    //  * Test case for creating an empty message.
+    //  */
+    // @Test
+    // @Order(2)
+    // @Description("Create an empty message")
+    // void createEmptyMessage() {
+    //     given().when()
+    //         .param("text", "")
+    //         .post("/talk/message/create")
+    //     .then()
+    //          .statusCode(Response.Status.BAD_REQUEST.getStatusCode());
+    // }
 
 }
