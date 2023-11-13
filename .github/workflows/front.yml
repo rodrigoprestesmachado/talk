@@ -1,4 +1,4 @@
-name: Orion Talk frontend
+name: Frontend
 
 on:
   push:
