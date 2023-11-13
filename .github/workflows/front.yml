@@ -53,6 +53,10 @@ jobs:
             npm run dev &
             cd ../..
 
+    - name: wait for services to start
+      run: |
+            sleep 20
+
     - name: Run Cypress
       run: |
             cd talk/front
