@@ -38,19 +38,19 @@ jobs:
     - name: Run Users
       run: |
             cd users
-            ./mvnw compile quarkus:dev
+            ./mvnw compile quarkus:dev &
             cd ..
 
     - name: Run Talk
       run: |
             cd talk
-            ./mvnw compile quarkus:dev
+            ./mvnw compile quarkus:dev &
             cd ..
     - name: Build Frontend
       run: |
             cd talk/front
             npm install
-            npm run dev
+            npm run dev &
             cd ../..
 
     - name: Cypress run
