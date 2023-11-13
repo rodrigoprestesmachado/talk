@@ -1,0 +1,64 @@
+name: Orion Talk frontend
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3.13.0
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Set up Nodejs
+      uses: actions/setup-node@v4
+
+    - name: Checkout Users
+      uses: actions/checkout@v4.1.1
+      with:
+        repository: orion-services/users
+        path: users
+
+    - name: Checkout Talk
+      uses: actions/checkout@v4.1.1
+      with:
+        repository: orion-services/talk
+        path: talk
+
+    - name: Run Users
+      run: |
+            cd users
+            ./mvnw compile quarkus:dev
+            cd ..
+
+    - name: Run Talk
+      run: |
+            cd talk
+            ./mvnw compile quarkus:dev
+            cd ..
+    - name: Build Frontend
+      run: |
+            cd talk/front
+            npm install
+            npm run dev
+            cd ../..
+
+    - name: Cypress run
+      run: |
+            cd talk/front
+            npm install
+            npm run test
+            cd ../..
+
+
+
