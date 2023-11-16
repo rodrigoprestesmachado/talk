@@ -1,0 +1,88 @@
+{
+  "id": "4",
+  "unreadMessages": 5,
+  "ownerId": "4",
+  "participantIds": ["4", "2", "6", "7", "8"],
+  "messages": [
+    {
+      "id": "1",
+      "senderId": "2",
+      "content": "Did anyone review the latest UI stuff from the San Francisco team?",
+      "date": "2020-10-30T12:34:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "2",
+      "senderId": "2",
+      "content": "Iam not sure if Ian still in the loop.",
+      "date": "2020-10-30T12:36:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "3",
+      "senderId": "3",
+      "content": "I saw some design files coming up on my inbox this morning but I didn't have time to review any of those.",
+      "date": "2020-10-30T13:09:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "4",
+      "senderId": "7",
+      "content": "i checked some of them, I think we are still missing the mobile wireframes.",
+      "date": "2020-10-30T13:11:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "5",
+      "senderId": "2",
+      "content": "Can one of you two send me the files?",
+      "date": "2020-10-30T13:12:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "6",
+      "senderId": "7",
+      "content": "Sure, will do.",
+      "date": "2020-10-30T13:17:00+0000",
+      "reactions": [
+        {
+          "id": "1",
+          "emoji": "👍",
+          "userId": "2"
+        },
+        {
+          "id": "2",
+          "emoji": "👍",
+          "userId": "3"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "senderId": "4",
+      "content": "Iam going to need those too if you don't mind",
+      "date": "2020-10-30T13:29:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "8",
+      "senderId": "7",
+      "content": "Gotcha, will add you to the loop.",
+      "date": "2020-10-30T13:31:00+0000",
+      "reactions": [
+        {
+          "id": "1",
+          "emoji": "👍",
+          "userId": "2"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "senderId": "2",
+      "content": "Alright guys, looks like it's settled",
+      "date": "2020-10-30T13:43:00+0000",
+      "reactions": []
+    }
+  ]
+}

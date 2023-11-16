@@ -1,0 +1,421 @@
+/*! _wizard.scss | Moebius | CSS Ninja 2020-2021 */
+
+/*
+    1. Workspace Wizard
+    1. Workspace Wizard Dark mode
+*/
+
+/* ==========================================================================
+1. Workspace Wizard
+========================================================================== */
+
+.wizard-wrapper {
+  min-height: 100vh;
+  background: lighten($fade-grey, 3%);
+  padding: 0 16px;
+
+  .wizard-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    progress {
+      border-radius: 0;
+      height: 0.35rem;
+
+      &::-webkit-progress-value {
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        transition: width 0.5s ease;
+      }
+
+      &::-moz-progress-bar {
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        transition: width 0.5s ease;
+      }
+
+      &::-ms-fill {
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        transition: width 0.5s ease;
+      }
+    }
+  }
+
+  .wizard-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+
+    .left,
+    .right {
+      display: flex;
+      align-items: center;
+      width: 20%;
+    }
+
+    .left {
+      .back-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        width: 36px;
+        color: $medium-text;
+        outline: none !important;
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        &:hover {
+          color: $primary;
+        }
+
+        svg {
+          height: 22px;
+          width: 22px;
+        }
+      }
+    }
+
+    .right {
+      justify-content: flex-end;
+    }
+
+    .center {
+      flex-grow: 2;
+
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          display: block;
+          width: 100%;
+          max-width: 50px;
+        }
+      }
+    }
+  }
+
+  .wizard-inner {
+    min-height: 100vh;
+    padding-top: 100px;
+
+    .wizard-step {
+      display: none;
+      animation: fadeInLeft 0.5s;
+
+      &.is-active {
+        display: block;
+      }
+
+      .step-inner {
+        h2 {
+          text-align: center;
+          font-family: $font;
+          font-weight: 700;
+          font-size: 1.7rem;
+          color: $dark-text;
+          max-width: 480px;
+          margin: 0 auto 8px;
+          line-height: 1.2;
+        }
+
+        > p {
+          text-align: center;
+          font-family: $font-text;
+          font-size: 1.1rem;
+          color: $medium-text;
+        }
+
+        .email-form,
+        .details-form {
+          .columns {
+            margin-left: -0.35rem;
+            margin-right: -0.35rem;
+            margin-top: -0.35rem;
+
+            .column {
+              padding: 0.35rem;
+            }
+          }
+
+          .field {
+            .control {
+              &.is-loading {
+                &::after {
+                  right: 1em;
+                  top: 1em;
+                }
+              }
+
+              &.has-validation {
+                .input {
+                  padding-right: 55px;
+                }
+              }
+
+              .input {
+                height: 50px;
+                padding-left: 55px;
+              }
+
+              .form-icon,
+              .validation-icon {
+                height: 50px;
+                width: 50px;
+
+                svg {
+                  height: 22px;
+                  width: 22px;
+                }
+              }
+
+              .validation-icon {
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                &.is-error {
+                  color: $danger;
+                }
+
+                &.is-success {
+                  color: $success;
+                }
+              }
+            }
+          }
+
+          .submit-wrap {
+            margin-bottom: 16px;
+
+            .button {
+              font-family: $font-text;
+              font-weight: 600;
+              height: 50px;
+              transition: all 0.3s;
+
+              &:hover {
+                box-shadow: $primary-box-shadow;
+              }
+            }
+          }
+
+          .setting-item {
+            margin-bottom: 30px;
+          }
+        }
+
+        .email-form {
+          width: 100%;
+          max-width: 380px;
+          margin: 30px auto 0;
+
+          p {
+            font-family: $font-text;
+            font-size: 0.9rem;
+            color: $medium-text;
+          }
+        }
+
+        .details-form {
+          width: 100%;
+          max-width: 380px;
+          margin: 30px auto 0;
+
+          .avatar-upload {
+            position: relative;
+            max-width: 110px;
+            margin: 20px auto;
+
+            .avatar-edit {
+              position: absolute;
+              right: -4px;
+              z-index: 1;
+              top: 10px;
+
+              input {
+                display: none;
+
+                + label {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 34px;
+                  height: 34px;
+                  margin-bottom: 0;
+                  border-radius: 100%;
+                  background: $white;
+                  border: 1px solid transparent;
+                  color: $medium-text;
+                  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 12%);
+                  cursor: pointer;
+                  font-weight: normal;
+                  transition: all 0.2s ease-in-out;
+
+                  &:hover {
+                    background: #f1f1f1;
+                    border-color: #d6d6d6;
+                  }
+
+                  svg {
+                    height: 16px;
+                    width: 16px;
+                  }
+                }
+              }
+            }
+
+            .avatar-preview {
+              width: 110px;
+              height: 110px;
+              position: relative;
+              border-radius: 100%;
+              border: 3px solid $primary;
+              box-shadow: $light-box-shadow;
+
+              > img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+
+              > div {
+                width: 100%;
+                height: 100%;
+                border-radius: 100%;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+              }
+            }
+          }
+
+          .company-avatar {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: darken($widget-grey, 4%);
+            margin: 20px auto;
+            transition: all 0.3s;
+
+            &.is-active {
+              background: lighten($primary, 42%);
+
+              span {
+                font-family: $font;
+                font-size: 1.8rem;
+                font-weight: 600;
+                color: darken($primary, 5%);
+                text-transform: uppercase;
+              }
+            }
+          }
+        }
+
+        .add-invite-field {
+          display: flex;
+          align-items: center;
+          margin: 10px 0 20px;
+          color: $primary;
+
+          span {
+            font-family: $font-text;
+            font-size: 0.9rem;
+          }
+
+          svg {
+            height: 18px;
+            width: 18px;
+            margin-right: 6px;
+          }
+        }
+
+        .wizard-end {
+          display: block;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+2. Workspace Wizard Dark mode
+========================================================================== */
+
+body {
+  &.is-dark {
+    .wizard-wrapper {
+      background: lighten($dark-mode, 4%);
+
+      .wizard-progress {
+        .progress {
+          background-color: $dark-mode !important;
+
+          &::-webkit-progress-bar {
+            background-color: lighten($dark-mode, 16%);
+          }
+        }
+      }
+
+      .wizard-inner {
+        .wizard-step {
+          .step-inner {
+            h2 {
+              color: $white;
+            }
+
+            .email-form,
+            .details-form {
+              .field {
+                .control {
+                  .input,
+                  .textarea {
+                    background: lighten($dark-mode, 18%);
+                    border-color: lighten($dark-mode, 18%);
+                    color: $white;
+
+                    &::placeholder {
+                      color: lighten($dark-mode, 34%);
+                    }
+                  }
+                }
+              }
+
+              .avatar-upload {
+                .avatar-edit {
+                  label {
+                    background: lighten($dark-mode, 14%);
+                    border-color: lighten($dark-mode, 14%);
+                  }
+                }
+              }
+
+              .company-avatar {
+                background: lighten($dark-mode, 18%);
+                border-color: lighten($dark-mode, 18%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

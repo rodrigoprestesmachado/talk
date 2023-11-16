@@ -1,0 +1,59 @@
+/*! _placeload.scss | Moebius | CSS Ninja 2020-2021 */
+
+/*
+    1. Placeloaders
+*/
+
+/* ==========================================================================
+1. Placeloaders
+========================================================================== */
+
+$background: #f6f7f8;
+$grey-nuance-lighter: #eee;
+$grey-nuance-darker: #ddd;
+$lighter-grey: #e8e8e8;
+
+.content-shape {
+  height: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 2px;
+}
+
+//Loading animation
+.loads {
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeload;
+  animation-timing-function: linear;
+  background: linear-gradient(
+    to right,
+    $grey-nuance-lighter 8%,
+    $grey-nuance-darker 18%,
+    $grey-nuance-lighter 33%
+  );
+  background-size: 1200px 104px;
+  position: relative;
+}
+
+//Keyframes
+@keyframes placeload {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+@keyframes placeload {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}

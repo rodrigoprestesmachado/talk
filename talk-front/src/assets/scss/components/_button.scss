@@ -1,0 +1,59 @@
+/*! _buttons.scss | Moebius | CSS Ninja 2020-2021 */
+
+/*
+    1. Button Styles
+*/
+
+/* ==========================================================================
+1. Button styles
+========================================================================== */
+
+button {
+  outline: none !important;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+.button {
+  font-family: $font-text;
+  outline: none !important;
+  transition: all 0.3s;
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &.is-loading {
+    color: transparent !important;
+
+    span {
+      color: transparent !important;
+    }
+
+    svg {
+      stroke: transparent !important;
+    }
+  }
+
+  &.is-primary,
+  &.is-danger,
+  &.is-info,
+  &.is-success,
+  &.is-warning {
+    color: $white;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &.is-primary {
+    &.raised:hover {
+      box-shadow: $primary-box-shadow;
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "id": "1",
+  "unreadMessages": 3,
+  "ownerId": "1",
+  "participantIds": ["1", "2", "3", "4"],
+  "messages": [
+    {
+      "id": "1",
+      "senderId": "1",
+      "content": "Hi Helen! I made a new design, and i wanted to show it to you.",
+      "date": "2020-10-31T08:24:00+0000",
+      "reactions": [
+        {
+          "id": "1",
+          "emoji": "👍",
+          "userId": "2"
+        },
+        {
+          "id": "2",
+          "emoji": "👍",
+          "userId": "3"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "senderId": "1",
+      "content": "This is what I came up with.",
+      "date": "2020-10-31T08:25:02+0000",
+      "reactions": []
+    },
+    {
+      "id": "210",
+      "senderId": "1",
+      "content": "It's quite clean and it's inspired from Dashkit.",
+      "date": "2020-10-31T08:25:05+0000",
+      "attachement": {
+        "mimetype": "image/png",
+        "name": "dashkit-preview.png",
+        "size": "2.1 Mb",
+        "url": "https://cdn.dribbble.com/users/881719/screenshots/8216873/media/04f390902dd8b77084567b9551f051b2.png"
+      },
+      "reactions": []
+    },
+    {
+      "id": "3",
+      "senderId": "2",
+      "content": "Oh really??! I want to see that.",
+      "date": "2020-10-31T09:33:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "4",
+      "senderId": "3",
+      "content": "Well I want to see that too! 🎉🎉🎉",
+      "date": "2020-10-31T09:45:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "5",
+      "senderId": "1",
+      "content": "You bet you want to see it!",
+      "date": "2020-10-31T09:47:00+0000",
+      "reactions": [
+        {
+          "id": "1",
+          "emoji": "😄",
+          "userId": "2"
+        },
+        {
+          "id": "2",
+          "emoji": "😄",
+          "userId": "3"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "senderId": "4",
+      "content": "Does it include the widgets we were discussing the other day? Could come in handy",
+      "date": "2020-10-31T09:52:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "7",
+      "senderId": "2",
+      "content": "Great to hear it. Just send me the PSD files so i can have a look at it.",
+      "date": "2020-10-31T10:01:00+0000",
+      "reactions": [
+        {
+          "id": "1",
+          "emoji": "👍",
+          "userId": "1"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "senderId": "2",
+      "content": "And if you have a prototype, you can also send me the link to it.",
+      "date": "2020-10-31T10:03:00+0000",
+      "attachement": {
+        "mimetype": "image/png",
+        "name": "prototype-preview.png",
+        "size": "1.2 Mb",
+        "url": "https://i.pinimg.com/originals/db/fb/0e/dbfb0ee5511d832b9ef66874d69988c4.png"
+      },
+      "reactions": []
+    },
+    {
+      "id": "9",
+      "senderId": "4",
+      "content": "I also need it because I need to start mocking things up. Aaron is expecting the prototype for next week.",
+      "date": "2020-10-31T10:12:00+0000",
+      "attachement": {
+        "mimetype": "application/zip",
+        "name": "bulma-0.9.1.zip",
+        "size": "228 Kb",
+        "url": "https://github.com/jgthms/bulma/releases/download/0.9.1/bulma-0.9.1.zip"
+      },
+      "reactions": [
+        {
+          "id": "1",
+          "emoji": "👊",
+          "userId": "2"
+        },
+        {
+          "id": "2",
+          "emoji": "👍",
+          "userId": "1"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "senderId": "2",
+      "content": "Oh my god! Is the deadline really next week? I feel there's still a lot to do on this.",
+      "date": "2020-10-31T10:16:00+0000",
+      "reactions": []
+    }
+  ]
+}

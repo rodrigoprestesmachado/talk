@@ -1,0 +1,92 @@
+/*! _helpers.scss | Moebius | CSS Ninja 2020-2021 */
+
+/*
+    1. General Helpers
+*/
+
+/* ==========================================================================
+1. General Helpers
+========================================================================== */
+
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.container {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+}
+
+.hide-text {
+  overflow: hidden;
+  padding: 0;
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.rounded {
+  overflow: hidden;
+}
+
+.rounded-bottom-0 {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.has-slimscroll {
+  &::-webkit-scrollbar {
+    width: 6px !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px !important;
+    background: rgb(0 0 0 / 20%) !important;
+  }
+}
+
+.has-light-shadow {
+  box-shadow: $light-box-shadow;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+.is-disabled {
+  pointer-events: none;
+  opacity: 0.4;
+  cursor: default !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.mb-12 {
+  margin-bottom: 12px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}

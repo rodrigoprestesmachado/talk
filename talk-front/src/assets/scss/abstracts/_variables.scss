@@ -1,0 +1,88 @@
+/*! _variables.scss | Moebius | CSS Ninja 2020-2021 */
+
+/*
+    1. Color Variables
+    2. Shadow Variables
+    3. Font Variables
+*/
+
+/* ==========================================================================
+1. Color Variables
+========================================================================== */
+
+$primary-color: #ffa538;
+$secondary-color: #ffa538;
+$accent-color: #ffa538;
+
+$success: #1fd169;
+$info: #236ee8;
+$warning: #dbe823;
+$danger: #e82351;
+
+$green: $success;
+$blue: $info;
+$orange: $warning;
+$red: $danger;
+$purple: #7321d1;
+$purple-accent: #8e74f7;
+
+$white: #fff;
+$black: #000;
+$font-color: #444;
+
+$primary: $primary-color;
+$secondary: $secondary-color;
+$accent: $accent-color;
+$link-color: $primary;
+$medium-text: #757a91;
+$medium-grey: #66676b;
+$grey-text: #888da8;
+$dark-text: #515365;
+$fade-grey: #ededed;
+$blue-grey: #444f60;
+$placeholder: #cecece;
+$muted-grey: #999;
+$widget-grey: #f5f6fa;
+$white-light: #fafafa;
+
+$dark-mode: #191c26;
+
+/* ==========================================================================
+2. Shadow Variables
+========================================================================== */
+
+$base-shadow: rgb(0 0 0 / 12%);
+
+//Light box shadow
+$light-box-shadow: -1px 3px 10px 0 rgb(0 0 0 / 6%);
+
+//Primary box shadow
+$primary-shadow-from: rgba($primary, 0.42);
+$primary-shadow-to: rgba($primary, 0.2);
+$primary-box-shadow: 0 14px 26px -12px $primary-shadow-from, 0 4px 23px 0 $base-shadow,
+  0 8px 10px -5px $primary-shadow-to !important;
+
+//Secondary box shadow
+$secondary-shadow-from: rgba($secondary, 0.42);
+$secondary-shadow-to: rgba($secondary, 0.2);
+$secondary-box-shadow: 0 14px 26px -12px $secondary-shadow-from, 0 4px 23px 0 $base-shadow,
+  0 8px 10px -5px $secondary-shadow-to !important;
+
+//Accent box shadow
+$accent-shadow-from: rgba($accent, 0.42);
+$accent-shadow-to: rgba($accent, 0.2);
+$accent-box-shadow: 0 14px 26px -12px $accent-shadow-from, 0 4px 23px 0 $base-shadow,
+  0 8px 10px -5px $accent-shadow-to !important;
+
+//Danger box shadow
+$danger-shadow-from: rgba($danger, 0.42);
+$danger-shadow-to: rgba($danger, 0.2);
+$danger-box-shadow: 0 14px 26px -12px $danger-shadow-from, 0 4px 23px 0 $base-shadow,
+  0 8px 10px -5px $danger-shadow-to !important;
+
+/* ==========================================================================
+3. Font Variables
+========================================================================== */
+
+$font: 'Montserrat', sans-serif;
+$font-text: 'Roboto', sans-serif;

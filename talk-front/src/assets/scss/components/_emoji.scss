@@ -1,0 +1,48 @@
+/*! _emoji.scss | Moebius | CSS Ninja 2020-2021 */
+
+/*
+    1. Emoji picker
+*/
+
+/* ==========================================================================
+1. Emoji picker
+========================================================================== */
+
+.picmo__popupContainer {
+  border-color: darken($fade-grey, 1%) !important;
+  box-shadow: $light-box-shadow !important;
+  z-index: 50;
+
+  .picmo__picker {
+    --emoji-size-multiplier: 1.9 !important;
+    --category-count: 7 !important;
+  }
+
+  .picmo__header {
+    --secondary-background-color: $fade-grey !important;
+  }
+
+  .picmo__closeButton:hover {
+    background: darken($primary, 10%) !important;
+  }
+
+  .picmo__categoryTabActive {
+    color: $primary !important;
+    border-color: $primary !important;
+  }
+
+  .picmo__picker .picmo__icon {
+    width: 0.9em;
+    height: 0.9em;
+  }
+
+  .picmo__picker
+    .picmo__categoryButtons
+    .picmo__categoryTab.picmo__categoryTabActive
+    .picmo__categoryButton {
+    color: darken($primary, 10%);
+    background: linear-gradient(rgb(255 255 255 / 75%) 0%, rgb(255 255 255 / 75%) 100%),
+      linear-gradient($primary 0%, $primary 100%);
+    border: 2px solid $primary;
+  }
+}

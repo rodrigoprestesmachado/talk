@@ -1,0 +1,35 @@
+{
+  "id": "3",
+  "unreadMessages": 0,
+  "ownerId": "6",
+  "participantIds": ["6", "2"],
+  "messages": [
+    {
+      "id": "1",
+      "senderId": "2",
+      "content": "Hey Kristie! Aren't we supposed to go the theatre after work?.",
+      "date": "2020-10-30T10:34:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "2",
+      "senderId": "2",
+      "content": "Just remembered it.",
+      "date": "2020-10-30T10:35:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "3",
+      "senderId": "6",
+      "content": "Yeah you always do that, forget about everything.",
+      "date": "2020-10-30T10:36:45+0000",
+      "reactions": [
+        {
+          "id": "1",
+          "emoji": "😄",
+          "userId": "2"
+        }
+      ]
+    }
+  ]
+}

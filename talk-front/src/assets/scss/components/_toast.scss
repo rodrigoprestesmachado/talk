@@ -1,0 +1,21 @@
+/*! _tast.scss | Moebius | CSS Ninja 2020-2021 */
+
+/*
+    1. Vue-Toastification
+*/
+
+/* ==========================================================================
+1. Vue-Toastification
+========================================================================== */
+
+.Vue-Toastification__container {
+  .Vue-Toastification__toast--success {
+    background-color: $purple-accent;
+    color: #fff;
+  }
+
+  .Vue-Toastification__toast--error {
+    background-color: $danger;
+    color: #fff;
+  }
+}

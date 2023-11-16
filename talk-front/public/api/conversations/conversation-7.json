@@ -1,0 +1,29 @@
+{
+  "id": "7",
+  "unreadMessages": 0,
+  "ownerId": "4",
+  "participantIds": ["4", "2"],
+  "messages": [
+    {
+      "id": "1",
+      "senderId": "2",
+      "content": "Walter, i forgot my folder at your place yesterday.",
+      "date": "2020-10-30T11:53:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "2",
+      "senderId": "2",
+      "content": "I need it badly, it's work stuff.",
+      "date": "2020-10-30T11:54:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "3",
+      "senderId": "4",
+      "content": "Yeah i noticed. I'll drop it in half an hour at your office.",
+      "date": "2020-10-30T11:58:00+0000",
+      "reactions": []
+    }
+  ]
+}

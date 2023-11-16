@@ -1,0 +1,35 @@
+{
+  "id": "2",
+  "unreadMessages": 0,
+  "ownerId": "5",
+  "participantIds": ["5", "2"],
+  "messages": [
+    {
+      "id": "1",
+      "senderId": "2",
+      "content": "Audrey, Amanda told me about your issue, how can I help?",
+      "date": "2020-10-30T15:11:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "2",
+      "senderId": "5",
+      "content": "Hey Helen, thanks for answering so quickly. Iam stuck, I need a car.",
+      "date": "2020-10-30T15:12:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "3",
+      "senderId": "5",
+      "content": "Can I borrow your car for a quick ride to San Fransisco? Iam running behind and there' no train in sight.",
+      "date": "2020-10-30T15:12:45+0000",
+      "reactions": [
+        {
+          "id": "1",
+          "emoji": "👍",
+          "userId": "2"
+        }
+      ]
+    }
+  ]
+}

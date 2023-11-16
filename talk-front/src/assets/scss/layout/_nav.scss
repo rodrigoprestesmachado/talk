@@ -1,0 +1,298 @@
+/*! _nav.scss | Moebius | CSS Ninja 2020-2021 */
+
+/*
+    1. Chat Nav
+*/
+
+/* ==========================================================================
+1. Chat Nav
+========================================================================== */
+
+//Chat top navigation
+.chat-nav {
+  position: absolute;
+  top: 0;
+  left: 60px;
+  width: calc(100% - 60px);
+  height: 60px;
+  background: $white;
+  border-bottom: 1px solid darken($fade-grey, 3%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 9;
+  transition: all 0.3s;
+
+  //Navbar start
+  .nav-start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .burger-wrapper {
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    //recipient
+    .recipient-block {
+      display: inherit;
+      justify-content: inherit;
+      align-items: inherit;
+
+      .avatar-container {
+        position: relative;
+        height: 32px;
+        width: 32px;
+
+        &:not(:first-child) {
+          $var: 14;
+
+          @for $i from 1 through 99 {
+            &:nth-child(#{$i}) {
+              margin-left: -#{$var}px;
+            }
+          }
+        }
+
+        .user-avatar {
+          border-radius: 50%;
+          border: 2px solid $white;
+        }
+      }
+
+      .username {
+        margin-left: 8px;
+
+        span {
+          display: block;
+
+          &:first-child {
+            font-family: $font;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: $medium-text;
+            line-height: 1.2;
+          }
+
+          &:nth-child(2) {
+            font-size: 0.75rem;
+            line-height: 1;
+            color: $muted-grey;
+          }
+        }
+      }
+    }
+  }
+
+  //Navbar end
+  .nav-end {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    //Dropdown
+    .dropdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 32px;
+      width: 32px;
+    }
+
+    .burger-wrapper-right {
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .toggle-wrapper {
+      margin-right: 10px;
+    }
+
+    //Navbar item
+    .chat-nav-item {
+      //Icon modifier
+      &.is-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+
+        &:hover {
+          background: lighten($fade-grey, 5%);
+
+          i {
+            color: $blue-grey;
+          }
+        }
+
+        .material-icons {
+          font-size: 18px;
+          color: $grey-text;
+          transition: color 0.3s;
+        }
+
+        svg {
+          height: 18px;
+          width: 18px;
+          stroke-width: 1.4px;
+          stroke: $medium-text;
+        }
+      }
+
+      &.is-spacer {
+        padding: 0 5px;
+      }
+
+      &.is-account {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 42px;
+        width: 42px;
+        border: 1.4px solid $placeholder;
+        border-radius: 50%;
+        transition: border 0.3s;
+
+        &:hover {
+          border-color: $secondary;
+        }
+
+        &.is-busy {
+          .indicator {
+            background: $danger;
+          }
+        }
+
+        img {
+          display: block;
+          height: 32px;
+          width: 32px;
+          border-radius: 50%;
+        }
+
+        .indicator {
+          position: absolute;
+          top: 0;
+          right: -1px;
+          height: 12px;
+          width: 12px;
+          border-radius: 50%;
+          border: 2px solid $white;
+          background: $success;
+        }
+      }
+
+      //Close chat window button
+      &.close-chat {
+        border-radius: 50%;
+
+        &:hover {
+          background: lighten($fade-grey, 3%);
+
+          svg {
+            stroke: $medium-text;
+          }
+        }
+      }
+    }
+
+    //Chat navbar search
+    .chat-search {
+      margin: 0 8px;
+
+      .control {
+        position: relative;
+      }
+
+      .input {
+        height: 36px;
+        padding-left: 36px;
+
+        &:focus {
+          border-color: $fade-grey;
+
+          + .form-icon svg {
+            stroke: $secondary;
+          }
+        }
+      }
+
+      .form-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 36px;
+        width: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+          height: 18px;
+          width: 18px;
+          stroke-width: 1.4px;
+          stroke: $placeholder;
+          transition: stroke 0.3s;
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 767px) {
+  .chat-nav {
+    .nav-start {
+      .burger-wrapper {
+        display: flex;
+      }
+    }
+
+    .nav-end {
+      .burger-wrapper-right {
+        display: flex;
+        margin-left: 20px;
+      }
+
+      .chat-nav-item {
+        &.is-account {
+          margin-left: 16px;
+        }
+      }
+
+      .dropdown {
+        .dropdown-menu {
+          position: fixed;
+          top: 45px;
+          left: 0;
+          width: calc(100% - 20px);
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (width >= 768px) and (width <= 1024px) and (orientation: portrait) {
+  .chat-nav {
+    .nav-end {
+      .burger-wrapper-right {
+        display: flex;
+        margin-left: 20px;
+      }
+
+      .chat-nav-item {
+        &.is-account {
+          margin-left: 16px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "unreadMessages": 3,
+    "ownerId": "1"
+  },
+  {
+    "id": "2",
+    "unreadMessages": 0,
+    "ownerId": "5"
+  },
+  {
+    "id": "3",
+    "unreadMessages": 0,
+    "ownerId": "6"
+  },
+  {
+    "id": "4",
+    "unreadMessages": 5,
+    "ownerId": "3"
+  },
+  {
+    "id": "5",
+    "unreadMessages": 4,
+    "ownerId": "11"
+  },
+  {
+    "id": "6",
+    "unreadMessages": 0,
+    "ownerId": "12"
+  },
+  {
+    "id": "7",
+    "unreadMessages": 0,
+    "ownerId": "4"
+  },
+  {
+    "id": "8",
+    "unreadMessages": 1,
+    "ownerId": "13"
+  }
+]

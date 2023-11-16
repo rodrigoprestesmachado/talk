@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1",
+    "nickname": "Mike Baggio",
+    "email": "mikebaggio@gmail.com",
+    "phone": "555-1212",
+    "customStatus": "Software Engineer",
+    "status": "online",
+    "avatar": "/uploads/avatars/mike.jpg"
+  },
+  {
+    "id": "2",
+    "nickname": "Helen Miller",
+    "email": "helenmiller@gmail.com",
+    "phone": "489-1212",
+    "customStatus": "Sales Manager",
+    "status": "online",
+    "avatar": "/uploads/avatars/helen.jpg"
+  },
+  {
+    "id": "3",
+    "nickname": "Ben Walsh",
+    "email": "benwalsh@gmail.com",
+    "phone": "778-5565",
+    "customStatus": "Software Engineer",
+    "status": "online",
+    "avatar": "/uploads/avatars/ben.jpg"
+  },
+  {
+    "id": "4",
+    "nickname": "Walter Grey",
+    "email": "wgrey@gmail.com",
+    "phone": "456-7865",
+    "customStatus": "Solution Architect",
+    "status": "away",
+    "avatar": "/uploads/avatars/walter.jpg"
+  },
+  {
+    "id": "5",
+    "nickname": "Audrey Sacks",
+    "email": "audreysacks@gmail.com",
+    "phone": "456-2354",
+    "customStatus": "HR Manager",
+    "status": "online",
+    "avatar": "/uploads/avatars/audrey.jpg"
+  },
+  {
+    "id": "6",
+    "nickname": "Kristie Brooks",
+    "email": "kristibr@gmail.com",
+    "phone": "123-4898",
+    "customStatus": "Designer",
+    "status": "busy",
+    "avatar": "/uploads/avatars/kristie.jpg"
+  },
+  {
+    "id": "7",
+    "nickname": "Alec Stax",
+    "email": "alectax@gmail.com",
+    "phone": "735-7654",
+    "customStatus": "Designer",
+    "status": "online",
+    "avatar": "/uploads/avatars/alec.jpg"
+  },
+  {
+    "id": "8",
+    "nickname": "Jack Mc Mahon",
+    "email": "jackmm@gmail.com",
+    "phone": "461-7654",
+    "customStatus": "Frontend Developer",
+    "status": "online",
+    "avatar": "/uploads/avatars/jack.jpg"
+  },
+  {
+    "id": "10",
+    "nickname": "Madeline Griffith",
+    "email": "madelineg@gmail.com",
+    "phone": "354-2565",
+    "customStatus": "head of Marketing",
+    "status": "away",
+    "avatar": "/uploads/avatars/madeline.jpg"
+  },
+  {
+    "id": "11",
+    "nickname": "Eddie Spitts",
+    "email": "eddiespitts@gmail.com",
+    "phone": "789-1568",
+    "customStatus": "Backend Developer",
+    "status": "online",
+    "avatar": "/uploads/avatars/eddie.jpg"
+  },
+  {
+    "id": "12",
+    "nickname": "Jim Stockton",
+    "email": "jimstockton@gmail.com",
+    "phone": "816-4598",
+    "customStatus": "Backend Developer",
+    "status": "online",
+    "avatar": "/uploads/avatars/jim.jpg"
+  },
+  {
+    "id": "13",
+    "nickname": "Tara Frost",
+    "email": "tarafrost@gmail.com",
+    "phone": "259-7894",
+    "customStatus": "Accountant",
+    "status": "busy",
+    "avatar": "/uploads/avatars/tara.jpg"
+  }
+]

@@ -1,0 +1,71 @@
+{
+  "id": "5",
+  "unreadMessages": 4,
+  "ownerId": "11",
+  "participantIds": ["11", "5", "2", "10", "7"],
+  "messages": [
+    {
+      "id": "1",
+      "senderId": "11",
+      "content": "Hey folks, what's up?",
+      "date": "2020-10-30T16:55:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "2",
+      "senderId": "11",
+      "content": "Iam coming to LA tomorrow. Interested in having lunch?",
+      "date": "2020-10-30T16:56:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "3",
+      "senderId": "2",
+      "content": "Hey mate, it's been a while. Sure I would love to.",
+      "date": "2020-10-30T17:21:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "4",
+      "senderId": "11",
+      "content": "Ok. Let's say i pick you up at 12:30 at work, works?",
+      "date": "2020-10-30T17:27:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "5",
+      "senderId": "10",
+      "content": "Hey Eddie! What's going on? Of course Iam in",
+      "date": "2020-10-30T17:29:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "6",
+      "senderId": "2",
+      "content": "Yup, that works great.",
+      "date": "2020-10-30T17:43:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "7",
+      "senderId": "7",
+      "content": "Yup, iam in!",
+      "date": "2020-10-30T17:44:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "8",
+      "senderId": "2",
+      "content": "And yeah Eddie, don't forget to bring some of my favourite cheese cake 😊",
+      "date": "2020-10-30T17:45:00+0000",
+      "reactions": []
+    },
+    {
+      "id": "9",
+      "senderId": "11",
+      "content": "No worries 😉",
+      "date": "2020-10-30T17:52:00+0000",
+      "reactions": []
+    }
+  ]
+}

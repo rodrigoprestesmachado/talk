@@ -1,0 +1,229 @@
+/*! _login.scss | Moebius | CSS Ninja 2020-2021 */
+
+/*
+    1. Login / Signup v1
+    2. Login / Signup v2
+    3. Media Queries
+*/
+
+/* ==========================================================================
+1. Login / Signup v1
+========================================================================== */
+
+.auth-wrapper {
+  overflow: hidden !important;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+
+  &.is-gapless:not(:last-child) {
+    margin-bottom: 0 !important;
+  }
+
+  &.is-single {
+    background: $widget-grey;
+    min-height: 100vh;
+  }
+
+  .hero-banner {
+    background: $widget-grey;
+  }
+
+  .hero {
+    .hero-heading {
+      max-width: 360px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 0 0;
+
+      .auth-logo {
+        .top-logo {
+          height: 42px;
+        }
+      }
+    }
+
+    .hero-body {
+      .login {
+        padding: 10px 0;
+      }
+
+      .auth-content {
+        max-width: 320px;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: -40px;
+        margin-bottom: 40px;
+
+        h2 {
+          font-size: 2rem;
+          font-family: $font;
+          line-height: 1;
+        }
+
+        p {
+          font-size: 1rem;
+          margin-bottom: 8px;
+          color: $muted-grey;
+        }
+
+        a {
+          font-size: 0.9rem;
+          font-family: $font-text;
+          font-weight: 500;
+          color: $primary;
+        }
+      }
+
+      .auth-form-wrapper {
+        max-width: 320px;
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .forgot-link {
+    margin-top: 10px;
+
+    a {
+      font-family: $font-text;
+      font-size: 0.9rem;
+      color: $medium-text;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+2. Login / Signup v2
+========================================================================== */
+
+.auth-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+    width: 20%;
+  }
+
+  .right {
+    justify-content: flex-end;
+  }
+
+  .center {
+    flex-grow: 2;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        display: block;
+        width: 100%;
+        max-width: 50px;
+      }
+    }
+  }
+}
+
+.auth-wrapper {
+  .single-form-wrap {
+    min-height: 690px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .inner-wrap {
+      width: 100%;
+      max-width: 400px;
+      margin: 40px auto 0;
+
+      .auth-head {
+        max-width: 320px;
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        text-align: center;
+
+        h2 {
+          font-size: 2rem;
+          font-family: $font;
+          line-height: 1;
+        }
+
+        p {
+          font-size: 1rem;
+          margin-bottom: 8px;
+          color: $muted-grey;
+        }
+
+        a {
+          font-size: 0.9rem;
+          font-family: $font-text;
+          font-weight: 500;
+          color: $primary;
+        }
+      }
+
+      .form-card {
+        background: $white;
+        border: 1px solid darken($fade-grey, 3%);
+        border-radius: 10px;
+        padding: 50px;
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+3. Media Queries
+========================================================================== */
+
+@media (width <= 767px) {
+  .auth-wrapper {
+    .hero {
+      .hero-body {
+        .auth-content {
+          text-align: center !important;
+        }
+      }
+    }
+
+    .single-form-wrap {
+      .inner-wrap {
+        .form-card {
+          padding: 40px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (width >= 768px) and (width <= 1024px) and (orientation: portrait) {
+  .auth-wrapper {
+    .hero {
+      .hero-body {
+        .auth-content {
+          text-align: center !important;
+        }
+      }
+    }
+  }
+}

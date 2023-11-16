@@ -1,0 +1,1050 @@
+/*! _dark.scss | Moebius | CSS Ninja 2020-2021 */
+
+/*
+    1. Chat Dark mode
+*/
+
+/* ==========================================================================
+1. Chat Dark mode
+========================================================================== */
+
+body {
+  &.is-dark {
+    background: lighten($dark-mode, 4%);
+
+    //Empty placeholder
+    .empty-placeholder {
+      h2 {
+        color: darken($white-light, 30%);
+      }
+    }
+
+    //Dark drodown
+    .dropdown {
+      .dropdown-menu,
+      .dropdown-content {
+        background: darken($dark-mode, 4%);
+        border-color: darken($dark-mode, 4%);
+
+        .dropdown-divider {
+          border-color: lighten($dark-mode, 10%);
+          background-color: lighten($dark-mode, 10%);
+        }
+
+        .dropdown-item {
+          &:hover {
+            background: darken($dark-mode, 1%);
+
+            .media {
+              background: darken($dark-mode, 1%);
+
+              svg {
+                stroke: lighten($primary, 6%);
+              }
+            }
+          }
+
+          &.no-hover {
+            &:hover {
+              background: darken($dark-mode, 4%);
+              border-color: darken($dark-mode, 4%);
+            }
+          }
+
+          &.is-header {
+            &:hover {
+              background: darken($dark-mode, 4%);
+            }
+
+            h5 {
+              color: $white;
+            }
+          }
+
+          .media {
+            .media-content {
+              h3 {
+                color: darken($white-light, 30%);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    //Modals
+    .action-modal {
+      .inner {
+        background: lighten($dark-mode, 5%);
+      }
+
+      .action-modal-card {
+        background: darken($dark-mode, 4%);
+        border-color: darken($dark-mode, 4%);
+
+        h3 {
+          color: darken($white-light, 30%);
+        }
+
+        .textarea {
+          background: lighten($dark-mode, 4%);
+          border-color: lighten($dark-mode, 4%);
+          color: lighten($medium-text, 8%);
+
+          &::placeholder {
+            color: darken($medium-text, 18%);
+          }
+        }
+
+        .end-controls {
+          button {
+            &:hover {
+              background: lighten($dark-mode, 4%);
+            }
+          }
+        }
+
+        .modal-controls {
+          .button {
+            &:not(.is-primary, .is-danger) {
+              background: lighten($dark-mode, 4%);
+              border-color: lighten($dark-mode, 4%);
+              color: $medium-text;
+            }
+          }
+        }
+      }
+    }
+
+    .add-conversation-modal {
+      .inner {
+        background: lighten($dark-mode, 5%);
+      }
+
+      .new-conversation-panel {
+        background: darken($dark-mode, 4%);
+        border-color: darken($dark-mode, 4%);
+
+        h2 {
+          color: darken($white-light, 30%);
+        }
+
+        .control {
+          .input {
+            background: lighten($dark-mode, 1%);
+            border-color: lighten($dark-mode, 1%);
+            color: $white-light;
+          }
+        }
+
+        .selected-users {
+          .selected-users-list {
+            .selected-user {
+              .avatar-container {
+                .remove-icon {
+                  background: lighten($dark-mode, 10%);
+                  border-color: lighten($dark-mode, 10%);
+                }
+              }
+
+              span {
+                color: lighten($medium-text, 16%);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    //Search results
+    .search-results {
+      background: lighten($dark-mode, 3%);
+      border-color: lighten($dark-mode, 3%);
+
+      .search-result {
+        border-color: lighten($dark-mode, 10%);
+
+        &:hover {
+          background: lighten($dark-mode, 1%);
+        }
+
+        .meta {
+          span {
+            &:first-child {
+              color: darken($white-light, 50%);
+            }
+          }
+        }
+      }
+    }
+
+    //Placeloader loading
+    .loads {
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeload;
+      animation-timing-function: linear;
+      background: linear-gradient(to right, #31374a 8%, #191c26 18%, #31374a 33%);
+      background-size: 1200px 104px;
+      position: relative;
+    }
+
+    //Emoji picker
+    .emoji-picker {
+      background: darken($dark-mode, 4%);
+      border-color: darken($dark-mode, 4%) !important;
+
+      .emoji-picker__search-container {
+        .emoji-picker__search {
+          background: lighten($dark-mode, 1%);
+          border-color: lighten($dark-mode, 1%);
+          color: $white-light;
+        }
+
+        .emoji-picker__search-icon {
+          color: $primary;
+        }
+      }
+
+      .emoji-picker__tab-body {
+        border-bottom-color: lighten($dark-mode, 12%) !important;
+
+        h2 {
+          color: $muted-grey;
+        }
+      }
+    }
+
+    .chat-wrapper {
+      background: lighten($dark-mode, 4%);
+
+      .chat-inner {
+        //Sidebar
+        .users-sidebar {
+          background: $dark-mode;
+
+          .conversations-list {
+            .user-item {
+              &.is-active,
+              &:hover {
+                background: lighten($dark-mode, 10%);
+
+                .avatar-container {
+                  .conversation-count {
+                    border-color: lighten($dark-mode, 10%) !important;
+                  }
+                }
+              }
+
+              .avatar-container {
+                .conversation-count {
+                  border-color: $dark-mode;
+                }
+              }
+            }
+          }
+
+          .footer-item {
+            .add-button {
+              background: $dark-mode;
+
+              &:hover {
+                background: $primary;
+
+                svg {
+                  stroke: $primary;
+                }
+              }
+            }
+          }
+        }
+
+        //Navbar
+        .chat-nav {
+          background: $dark-mode;
+          border-bottom-color: $dark-mode;
+
+          .nav-start {
+            .recipient-block {
+              .avatar-container {
+                .user-avatar {
+                  border-color: $dark-mode;
+                }
+              }
+
+              .username {
+                span {
+                  &:first-child {
+                    color: $white-light;
+                  }
+                }
+              }
+            }
+          }
+
+          .nav-end {
+            .chat-search {
+              .control {
+                input {
+                  background: lighten($dark-mode, 12%);
+                  border-color: lighten($dark-mode, 12%);
+                  color: $white-light;
+
+                  &::placeholder {
+                    color: darken($white-light, 30%);
+                  }
+                }
+              }
+            }
+
+            .chat-nav-item {
+              &.is-icon {
+                &:hover {
+                  background: lighten($dark-mode, 5%);
+
+                  i {
+                    color: $white;
+                  }
+                }
+              }
+
+              &.is-account {
+                border-color: lighten($dark-mode, 20%);
+
+                &:hover {
+                  border-color: $primary;
+                }
+              }
+            }
+          }
+        }
+
+        //Chat body
+        .chat-body {
+          background: lighten($dark-mode, 4%);
+
+          .chat-body-inner {
+            .date-divider {
+              hr {
+                border-top-color: lighten($dark-mode, 16%);
+              }
+
+              span {
+                background: lighten($dark-mode, 4%);
+                color: lighten($dark-mode, 28%);
+              }
+            }
+
+            .chat-message {
+              &.is-received {
+                .message-block {
+                  .message-text {
+                    background: lighten($dark-mode, 12%);
+                    color: lighten($medium-text, 10%);
+
+                    &::before {
+                      border-top-color: lighten($dark-mode, 12%);
+                    }
+                  }
+                }
+              }
+
+              &.is-sent {
+                .message-block {
+                  .message-text {
+                    background: darken($dark-mode, 6%);
+                    color: lighten($medium-text, 10%);
+
+                    &::before {
+                      border-top-color: darken($dark-mode, 6%);
+                    }
+                  }
+                }
+              }
+
+              .message-block {
+                .message-text {
+                  .uploaded-file {
+                    background: lighten($dark-mode, 2%);
+                    border: lighten($dark-mode, 6%);
+                    color: lighten($medium-text, 10%);
+
+                    .icon-container {
+                      background: lighten($dark-mode, 8%);
+                    }
+
+                    .meta {
+                      span {
+                        &:first-child {
+                          color: $white;
+                        }
+
+                        &:nth-child(2) {
+                          color: lighten($medium-text, 10%);
+                        }
+                      }
+                    }
+
+                    .action {
+                      button {
+                        color: lighten($medium-text, 10%);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        //Chat action
+        .chat-action {
+          background: lighten($dark-mode, 4%);
+
+          .chat-action-inner {
+            .control {
+              textarea {
+                background: $dark-mode;
+                border-color: $dark-mode;
+                color: darken($white-light, 30%);
+
+                &:focus {
+                  border-color: $dark-mode !important;
+                }
+              }
+            }
+          }
+        }
+
+        .chat-border {
+          background: lighten($dark-mode, 4%);
+        }
+
+        //Chat panel
+        .chat-panel {
+          background: $dark-mode;
+          border-color: $dark-mode;
+
+          .panel-inner {
+            .panel-header {
+              background: $dark-mode;
+
+              .nav {
+                .nav-link {
+                  color: darken($medium-text, 6%);
+                  border-bottom-color: lighten($dark-mode, 16%);
+
+                  &.active {
+                    color: $white-light;
+                  }
+                }
+              }
+
+              .panel-close {
+                &:hover {
+                  background: lighten($dark-mode, 8%);
+                }
+              }
+            }
+
+            .panel-body {
+              .block-title {
+                .line {
+                  border-color: lighten($dark-mode, 16%) !important;
+                }
+              }
+
+              &.is-people {
+                .panel-body-inner {
+                  .participants-wrap {
+                    .participants-block {
+                      &.started-by {
+                        .block-content {
+                          .participant-item {
+                            background: lighten($dark-mode, 4%);
+                            border-color: lighten($dark-mode, 4%);
+
+                            .avatar-container {
+                              .user-status {
+                                border-color: lighten($dark-mode, 4%);
+                              }
+                            }
+
+                            .actions {
+                              .action {
+                                background: darken($dark-mode, 4%);
+                                border-color: darken($dark-mode, 4%);
+
+                                &:hover {
+                                  border-color: $primary;
+                                  color: $primary;
+
+                                  svg {
+                                    stroke: $primary;
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+
+                      .block-title {
+                        .line {
+                          border-color: lighten($dark-mode, 16%);
+                        }
+                      }
+
+                      .block-content {
+                        .participant-item {
+                          &:hover {
+                            background: lighten($dark-mode, 4%);
+                            border-color: lighten($dark-mode, 4%);
+                          }
+
+                          .avatar-container {
+                            .user-status {
+                              border-color: $dark-mode;
+                            }
+                          }
+
+                          .meta {
+                            span {
+                              &:first-child {
+                                color: $white-light;
+                              }
+                            }
+                          }
+
+                          .actions {
+                            .action {
+                              background: darken($dark-mode, 4%);
+                              border-color: darken($dark-mode, 4%);
+
+                              &:hover {
+                                border-color: $primary;
+                                color: $primary;
+
+                                svg {
+                                  stroke: $primary;
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+              &.is-activity {
+                .panel-body-inner {
+                  .block-title {
+                    .line {
+                      border-color: lighten($dark-mode, 16%);
+                    }
+                  }
+
+                  .activity-items {
+                    .activity-item {
+                      border-color: $dark-mode;
+                      background: $dark-mode;
+
+                      .meta {
+                        p {
+                          span {
+                            color: lighten($medium-text, 35%);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+              &.is-user-details {
+                .panel-body-inner {
+                  .subheader {
+                    .action-icon {
+                      &:hover {
+                        background: lighten($dark-mode, 8%);
+                      }
+                    }
+                  }
+
+                  .details-avatar {
+                    .call-me {
+                      border-color: $dark-mode;
+                    }
+                  }
+
+                  .user-meta {
+                    h3 {
+                      color: $white-light;
+                    }
+                  }
+
+                  .user-actions {
+                    .user-action {
+                      background: lighten($dark-mode, 8%);
+                      border-color: lighten($dark-mode, 12%);
+
+                      &:hover {
+                        background: $primary;
+                        border-color: $primary;
+                      }
+                    }
+                  }
+
+                  .user-about {
+                    .about-block {
+                      background: lighten($dark-mode, 8%);
+                      border-color: lighten($dark-mode, 12%);
+
+                      .about-text {
+                        a {
+                          color: $muted-grey;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .slide-panel {
+      background: darken($dark-mode, 6%);
+
+      &.is-right {
+        border-color: $dark-mode;
+      }
+
+      &.is-left {
+        border-color: $dark-mode;
+      }
+
+      .slide-panel-header {
+        .slide-panel-close {
+          &:hover {
+            background: lighten($dark-mode, 3%);
+
+            i {
+              color: $white;
+            }
+          }
+        }
+      }
+
+      .slide-panel-body {
+        .slide-panel-placeholder {
+          text-align: center;
+
+          h3 {
+            color: $white;
+          }
+        }
+
+        .slide-panel-list {
+          .slide-panel-list-group {
+            .slide-panel-list-group-header {
+              .header-icon {
+                background: lighten($dark-mode, 8%);
+                border-color: lighten($dark-mode, 8%);
+              }
+
+              .header-line {
+                border-color: lighten($dark-mode, 8%);
+              }
+            }
+          }
+
+          .slide-panel-list-item {
+            &:hover {
+              background: darken($dark-mode, 2%);
+              border-color: lighten($dark-mode, 6%);
+
+              .icon-container {
+                background: $primary;
+                border-color: $primary;
+                color: $white;
+              }
+
+              .meta {
+                span {
+                  &:first-child {
+                    color: $white;
+                  }
+                }
+              }
+            }
+
+            .icon-container {
+              background: lighten($dark-mode, 4%);
+              color: $medium-text;
+            }
+
+            .actions {
+              .action {
+                background: none;
+                border-color: lighten($dark-mode, 6%);
+                color: lighten($dark-mode, 6%);
+
+                &:hover {
+                  border-color: $primary;
+
+                  svg {
+                    stroke: $primary;
+                  }
+                }
+
+                svg {
+                  stroke: $medium-text;
+                }
+              }
+            }
+          }
+        }
+
+        .workspaces-list {
+          .workspace-item {
+            &.is-active {
+              background: lighten($dark-mode, 6%);
+
+              .item-icon {
+                &:not(.is-colored) {
+                  background: $white;
+                }
+
+                .indicator {
+                  border-color: lighten($dark-mode, 6%);
+                }
+              }
+
+              .item-meta {
+                span {
+                  &:first-child {
+                    color: $white;
+                  }
+                }
+              }
+            }
+
+            .item-icon {
+              &:not(.is-colored) {
+                background: lighten($dark-mode, 6%);
+              }
+
+              &.is-colored {
+                &.is-info {
+                  background: $info;
+
+                  span {
+                    color: $white;
+                  }
+                }
+
+                &.is-success {
+                  background: $success;
+
+                  span {
+                    color: $white;
+                  }
+                }
+
+                &.is-warning {
+                  background: $warning;
+
+                  span {
+                    color: $white;
+                  }
+                }
+
+                &.is-purple {
+                  background: $purple;
+
+                  span {
+                    color: $white;
+                  }
+                }
+              }
+            }
+
+            .item-meta {
+              span {
+                &:first-child {
+                  font-weight: 400;
+                }
+              }
+            }
+
+            .item-settings {
+              .button {
+                background: darken($dark-mode, 2%);
+                border-color: lighten($dark-mode, 4%);
+              }
+            }
+          }
+
+          .add-workspace {
+            &:hover {
+              .item-icon {
+                border-color: lighten($dark-mode, 36%);
+
+                svg {
+                  stroke: lighten($dark-mode, 36%);
+                }
+              }
+            }
+
+            .item-icon {
+              border-color: lighten($dark-mode, 16%);
+
+              svg {
+                stroke: lighten($dark-mode, 16%);
+              }
+            }
+          }
+        }
+
+        .workspace-avatar {
+          .avatar-icon {
+            background: lighten($dark-mode, 8%);
+
+            .button {
+              background: lighten($dark-mode, 4%);
+              border-color: lighten($dark-mode, 14%);
+
+              &:hover {
+                background: $primary;
+                border-color: $primary;
+                color: $white;
+
+                svg {
+                  stroke: $white;
+                }
+              }
+            }
+          }
+
+          .field {
+            .control {
+              .input {
+                background: darken($dark-mode, 6%);
+                color: $white;
+              }
+            }
+          }
+        }
+
+        .add-workspace-member {
+          .add-member {
+            > .button {
+              background: lighten($dark-mode, 4%);
+              border-color: lighten($dark-mode, 14%);
+
+              &:hover {
+                background: $primary;
+                border-color: $primary;
+                color: $white;
+
+                svg {
+                  stroke: $white;
+                }
+              }
+            }
+
+            .filter-button {
+              .button {
+                &:hover {
+                  background: lighten($dark-mode, 4%);
+
+                  svg {
+                    stroke: $primary;
+                  }
+                }
+              }
+            }
+          }
+
+          .panel-search {
+            .field {
+              .control {
+                .input {
+                  background: lighten($dark-mode, 4%);
+                  border-color: lighten($dark-mode, 4%);
+
+                  &::placeholder {
+                    color: lighten($dark-mode, 18%);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .members {
+          .members-block {
+            .block-title {
+              .line {
+                border-color: lighten($dark-mode, 10%);
+              }
+            }
+
+            .block-content {
+              .members-item {
+                &:hover {
+                  background: darken($dark-mode, 2%);
+                  border-color: lighten($dark-mode, 6%);
+
+                  .meta {
+                    span {
+                      &:first-child {
+                        color: $white;
+                      }
+                    }
+                  }
+                }
+
+                .actions {
+                  .action {
+                    background: none;
+                    border-color: lighten($dark-mode, 6%);
+                    color: lighten($dark-mode, 6%);
+
+                    &:hover {
+                      border-color: $primary;
+
+                      svg {
+                        stroke: $primary;
+                      }
+                    }
+
+                    svg {
+                      stroke: $medium-text;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .help-text {
+          h3 {
+            color: $white;
+          }
+        }
+
+        .search-field {
+          background: lighten($dark-mode, 4%);
+          border-color: lighten($dark-mode, 4%);
+
+          &::placeholder {
+            color: lighten($dark-mode, 18%);
+          }
+        }
+
+        .invite-members-form {
+          .instructions {
+            h3 {
+              color: $white;
+            }
+          }
+
+          .inner-form {
+            .form-template {
+              background: lighten($dark-mode, 4%);
+              border-color: lighten($dark-mode, 4%);
+
+              .field {
+                .control {
+                  .input {
+                    background: lighten($dark-mode, 4%);
+                    border-color: lighten($dark-mode, 4%);
+                  }
+                }
+              }
+            }
+
+            .form-controls {
+              .button {
+                &:not(.is-primary) {
+                  background: lighten($dark-mode, 4%);
+                  border-color: lighten($dark-mode, 4%);
+                  color: $medium-text;
+                }
+              }
+            }
+          }
+        }
+
+        .selected-users-list {
+          .selected-user {
+            background: lighten($dark-mode, 2%);
+            border-color: lighten($dark-mode, 6%);
+
+            > span {
+              color: $white;
+            }
+
+            .remove-icon {
+              background: darken($dark-mode, 2%);
+              border-color: lighten($dark-mode, 2%);
+            }
+          }
+        }
+
+        .restore-defaults {
+          .button {
+            background: lighten($dark-mode, 4%);
+            border-color: lighten($dark-mode, 4%);
+            color: $medium-text;
+
+            &:hover {
+              background: $primary;
+              border-color: $primary;
+              color: $white;
+            }
+          }
+        }
+
+        .clear-all,
+        .delete-workspace {
+          .button {
+            background: lighten($dark-mode, 4%);
+            border-color: lighten($dark-mode, 4%);
+            color: $medium-text;
+
+            &:hover {
+              background: $danger;
+              border-color: $danger;
+              color: $white;
+            }
+          }
+        }
+
+        .custom-text-filter-placeholder {
+          h3 {
+            color: $white;
+          }
+        }
+      }
+    }
+
+    .setting-item {
+      .setting-meta {
+        span {
+          &:first-child {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}

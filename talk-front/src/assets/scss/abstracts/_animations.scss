@@ -1,0 +1,57 @@
+/*! _animations.scss | Moebius | CSS Ninja 2020-2021 */
+
+/*
+    1. Fade In Left
+    2. Levitate
+*/
+
+/* ==========================================================================
+1. Fade In Left
+========================================================================== */
+
+@keyframes fadeInLeft {
+  from {
+    transform: translate3d(10px, 0, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.preFadeInLeft {
+  opacity: 0;
+}
+
+.fadeInLeft {
+  opacity: 0;
+  // -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+
+/* ==========================================================================
+2. Levitate
+========================================================================== */
+
+@keyframes levitate {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(0, 10px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.levitate {
+  animation-name: levitate;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
