@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Create Message
-parent: Use Cases
+parent: Features
 nav_order: 3
 ---
 
