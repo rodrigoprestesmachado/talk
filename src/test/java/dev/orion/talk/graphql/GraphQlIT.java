@@ -16,18 +16,7 @@
  */
 package dev.orion.talk.graphql;
 
-import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-
 import io.quarkus.test.junit.QuarkusTest;
-import io.quarkus.test.security.TestSecurity;
-import io.restassured.http.ContentType;
-import io.restassured.response.ValidatableResponse;
-import io.vertx.core.cli.annotations.Description;
-import io.restassured.response.Response;
 
 /**
  * Integration tests for GraphQL queries and mutations.

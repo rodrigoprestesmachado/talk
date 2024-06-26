@@ -16,15 +16,7 @@
  */
 package dev.orion.talk.rest;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
-
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-
 import io.quarkus.test.junit.QuarkusTest;
-import io.vertx.core.cli.annotations.Description;
-import jakarta.ws.rs.core.Response;
 
 /**
  * Integration tests for the REST API of the Talk application.
